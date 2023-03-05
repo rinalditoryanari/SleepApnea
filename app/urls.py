@@ -1,21 +1,22 @@
 from django.urls import path
 from django.shortcuts import render
 from app import views
+from .view import dashboard, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
 
 urlpatterns = [
-    path('abcdefgh', views.dashboard),
+    path('abcdefgh', dashboard.dashboard),
 
-    path('', views.index0, name='dashboard'),
-    path('dashboard-general-dashboard', views.index,
+    path('', dashboard.index0, name='dashboard'),
+    path('dashboard-general-dashboard', dashboard.index,
          name='dashboard-general-dashboard'),
 
 
     # Layout
-    path("layout-default-layout", views.layout_default_layout,
+    path("layout-default-layout", layout.layout_default_layout,
          name="layout-default-layout"),
 
     # Blank Page
-    path("blank-page", views.blank_page, name="blank-page"),
+    path("blank-page", blankpage.blank_page, name="blank-page"),
 
     # Bootstrap
     path("bootstrap-alert", views.bootstrap_alert, name="bootstrap-alert"),

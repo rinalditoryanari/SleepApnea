@@ -3,25 +3,6 @@ from django.shortcuts import render
 # Create your views here.
 
 
-def dashboard(request):
-    return render(request, 'dashboard.html')
-
-
-def index0(request):
-    return render(request, 'pages/index-0.html')
-
-
-def index(request):
-    return render(request, 'pages/index.html')
-
-
-def layout_default_layout(request):
-    return render(request, 'pages/layout-default-layout.html')
-
-
-def blank_page(request):
-    return render(request, 'pages/blank.html')
-
 
 def bootstrap_alert(request):
     return render(request, 'pages/bootstrap-alert.html')
@@ -236,19 +217,19 @@ def auth_reset_password(request):
 
 
 def error_403(request):
-    return render(request, 'pages/error-403.html')
+    return render(request, 'pages/errors-403.html')
 
 
 def error_404(request):
-    return render(request, 'pages/error-404.html')
+    return render(request, 'pages/errors-404.html')
 
 
 def error_500(request):
-    return render(request, 'pages/error-500.html')
+    return render(request, 'pages/errors-500.html')
 
 
 def error_503(request):
-    return render(request, 'pages/error-503.html')
+    return render(request, 'pages/errors-503.html')
 
 
 def features_activities(request):
