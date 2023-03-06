@@ -171,8 +171,12 @@
 		</div>
 	</div>
 </div>
-{% endblock %} {% block plugins_js %}
-<script src="../node_modules/prismjs/prism.js"></script>
-{% endblock %} {% block page_js %}
+{% endblock %}
+<!---->
+{% block plugins_js %}
+<script src="{% static 'node_modules/prismjs/prism.js' %}"></script>
+{% endblock %}
+<!---->
+{% block page_js %}
 <script src="../assets/js/page/bootstrap-modal.js"></script>
 {% endblock %}

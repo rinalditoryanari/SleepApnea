@@ -1,5 +1,4 @@
 <!-- @format -->
-
 {% extends 'master.html' %}
 <!---->
 {% load static %}
@@ -8,7 +7,9 @@
 <!---->
 {% block plugins_css %}
 <link rel="stylesheet" href="{% static 'node_modules/chocolat/dist/css/chocolat.css' %}" />
-{% endblock %} {% block content %}
+{% endblock %}
+<!---->
+{% block content %}
 <section class="section">
 	<div class="section-header">
 		<h1>Card</h1>
@@ -280,9 +281,17 @@
 					<div class="card-body">
 						<div class="mb-2 text-muted">Click the picture below to see the magic!</div>
 						<div class="chocolat-parent">
-							<a href="../assets/img/example-image.jpg" class="chocolat-image" title="Just an example">
+							<a
+								href="{% static 'assets/img/example-image.jpg' %}"
+								class="chocolat-image"
+								title="Just an example"
+							>
 								<div data-crop-image="285">
-									<img alt="image" src="../assets/img/example-image.jpg" class="img-fluid" />
+									<img
+										alt="image"
+										src="{% static 'assets/img/example-image.jpg' %}"
+										class="img-fluid"
+									/>
 								</div>
 							</a>
 						</div>
@@ -406,6 +415,6 @@
 	</div>
 </section>
 {% endblock %} {% block plugins_js %}
-<script src="../node_modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
-<script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+<script src="{% static 'node_modules/chocolat/dist/js/jquery.chocolat.min.js' %}"></script>
+<script src="{% static 'node_modules/jquery-ui-dist/jquery-ui.min.js' %}"></script>
 {% endblock %}
