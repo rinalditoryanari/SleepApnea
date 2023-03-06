@@ -2,4 +2,4 @@ from django.shortcuts import render
 
 
 def credits(request):
-    return render(request, 'pages/credits.html')
+    return render(request, 'pages/stisla/credits/credits.html')

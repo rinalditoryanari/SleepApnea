@@ -6,8 +6,8 @@ def dashboard(request):
 
 
 def index0(request):
-    return render(request, 'pages/index-0.html')
+    return render(request, 'pages/stisla/dashboard/index-0.html')
 
 
 def index(request):
-    return render(request, 'pages/index.html')
+    return render(request, 'pages/stisla/dashboard/index.html')

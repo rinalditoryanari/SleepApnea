@@ -13,6 +13,10 @@ urlpatterns = [
     # Layout
     path("layout-default-layout", layout.layout_default_layout,
          name="layout-default-layout"),
+    path("layout-top-navigation", layout.layout_top_navigation,
+         name="layout-top-navigation"),
+    path("layout-transparent", layout.layout_transparent,
+         name="layout-transparent"),
 
     # Blank Page
     path("blank-page", blankpage.blank_page, name="blank-page"),
