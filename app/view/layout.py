@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 
 def layout_default_layout(request):
-    return render(request, 'pages/stisla/layout/layout-default-layout.html')
+    return render(request, 'pages/stisla/layout/layout-default.html')
 
 
 def layout_top_navigation(request):

@@ -1,22 +1,20 @@
 from django.urls import path
-from django.shortcuts import render
+from django.shortcuts import redirect
 from .view import dashboard, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
 
 urlpatterns = [
     path('abcdefgh', dashboard.dashboard),
 
-    path('', dashboard.index0, name='dashboard'),
-    path('dashboard-general-dashboard', dashboard.index,
-         name='dashboard-general-dashboard'),
+    path('', lambda request: redirect('dashboard-general-dashboard')),
 
+    path('dashboard-general-dashboard', dashboard.index0,
+         name='dashboard-general-dashboard'),
+    path('dashboard-ecommerce-dashboard', dashboard.index,
+         name='dashboard-ecommerce-dashboard'),
 
     # Layout
     path("layout-default-layout", layout.layout_default_layout,
          name="layout-default-layout"),
-    path("layout-top-navigation", layout.layout_top_navigation,
-         name="layout-top-navigation"),
-    path("layout-transparent", layout.layout_transparent,
-         name="layout-transparent"),
 
     # Blank Page
     path("blank-page", blankpage.blank_page, name="blank-page"),
