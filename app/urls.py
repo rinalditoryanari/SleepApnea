@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from .view import dashboard, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
 from .view import login, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
 from .view import master, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
+from .view import super, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
 
 
 urlpatterns = [
@@ -26,6 +27,19 @@ urlpatterns = [
      #Super Admin
      path('dashboard-super', dashboard.superadmin,
          name='dashboard-super'),
+     path('data-akun-admin', super.data,
+         name='data-akun-admin'),
+     path('tambah-data-akun-admin', super.tambahdata,
+         name='tambah-data-akun-admin'),   
+     path('data-pasien', super.pasien,
+         name='data-pasien'),
+     path('tambah-data-pasien', super.tambahpasien,
+         name='tambah-data-pasien'),
+     path('riwayat-laporan', super.riwayatlaporan,
+         name='riwayat-laporan'),
+     path('tambah-rekaman', super.tambahrekaman,
+         name='tambah-rekaman'),  
+
 
      # auth
     path("auth-forgot-password", auth.auth_forgot_password,
