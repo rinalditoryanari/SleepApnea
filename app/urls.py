@@ -1,16 +1,40 @@
 from django.urls import path
 from django.shortcuts import redirect
 from .view import dashboard, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
+from .view import login, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
+from .view import master, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
+
 
 urlpatterns = [
     path('abcdefgh', dashboard.dashboard),
 
-    path('', lambda request: redirect('dashboard-general-dashboard')),
+    path('', lambda request: redirect('auth-login2')),
 
     path('dashboard-general-dashboard', dashboard.index0,
          name='dashboard-general-dashboard'),
     path('dashboard-ecommerce-dashboard', dashboard.index,
          name='dashboard-ecommerce-dashboard'),
+
+     #Master
+     path('dashboard-master', dashboard.master,
+         name='dashboard-master'),
+     path('data-akun-super', master.data,
+         name='data-akun-super'),
+     path('tambah-data-akun-super', master.tambahdata,
+         name='tambah-data-akun-super'),
+
+     #Super Admin
+     path('dashboard-super', dashboard.superadmin,
+         name='dashboard-super'),
+
+     # auth
+    path("auth-forgot-password", auth.auth_forgot_password,
+         name="auth-forgot-password"),
+    path("auth-login", auth.auth_login, name="auth-login"),
+    path("auth-login2", login.index0, name="auth-login2"),
+    path("auth-register", auth.auth_register, name="auth-register"),
+    path("auth-reset-password", auth.auth_reset_password,
+         name="auth-reset-password"),
 
     # Layout
     path("layout-default-layout", layout.layout_default_layout,

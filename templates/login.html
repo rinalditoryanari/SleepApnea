@@ -3,13 +3,14 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport" />
-		<title>{% block title %}{% endblock %}</title>
-
-		<!-- General CSS Files -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"
+            name="viewport">
+            <title>{% block title %}{% endblock %}</title>
+    
+        <!-- General CSS Files -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -17,29 +18,23 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
-		<style>
-			html {
-				scroll-behavior: smooth;
-			}
-		</style>
-
-		<!-- CSS Libraries -->
-		{% block plugins_css %}{% endblock %}
-
-		<!-- Template CSS -->
-		<link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+	
+    
+        <!-- Template CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
 		<link rel="stylesheet" href="{% static 'assets/css/components.css' %}" />
 		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}" />
-	</head>
+    </head>
+	
 
 	<body>
 		<div id="app">
-			{% include 'includes/header.html' %} {% include 'includes/mastersidebar.html' %}
-			<div class="main-content">
+			
+			
 				<!---->
 				{% block content %} {% endblock content %}
-			</div>
-			{% include 'includes/footer.html' %}
+			
+            
 		</div>
 
 		<!-- General JS Scripts -->

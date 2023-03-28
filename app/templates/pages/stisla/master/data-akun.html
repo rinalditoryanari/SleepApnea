@@ -1,0 +1,267 @@
+<!-- @format -->
+{% extends 'master.html' %}
+<!---->
+{% load static %}
+<!---->
+{% block title %}Master Dashboard{% endblock title %}
+<!---->
+{% block plugins_css %}
+<link href="{% static 'node_modules/jqvmap/dist/jqvmap.min.css' %}" />
+<link href="{% static 'node_modules/weathericons/css/weather-icons.min.css' %}" />
+<link href="{% static 'node_modules/weathericons/css/weather-icons-wind.min.css' %}" />
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css"
+	integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
+	crossorigin="anonymous"
+	referrerpolicy="no-referrer"
+/>
+{% endblock %}
+<!---->
+{% block content %}
+<section class="section">
+	<div class="section-header">
+		<h1>Selamat Datang, Master Dashboard</h1>
+	</div>
+	<div class="row">
+		<div class="col-3 col-sm-12">
+			<div class="card">
+				<div class="card-header">
+					<h4>On Progress &nbsp; . &nbsp; . &nbsp; .</h4>
+					<div class="card-header-action">
+						<a href="#" class="btn btn-primary">Selengkapnya &nbsp; ></a>
+					</div>
+				</div>
+				<div class="card-body p-0">
+					<div class="table-responsive">
+						<table class="table table-striped mb-0">
+							<thead>
+								<tr>
+									<th>ID Nurse</th>
+                                    <th>Nama Lengkap</th>
+									<th>Username</th>
+									<th>ID Admin</th>
+                                    <th>Waktu Dibuat</th>
+                                    <th>Terakhir Aktif</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										1
+									</td>
+									<td>
+										<a href="#" class="font-weight-600"
+											>
+											Bagus Dwi Cahya</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											Jalanin Aja</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											2023-03-28</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											17:32</a
+										>
+									</td>
+									<td>
+										<a href="#" class="btn btn-primary">2023/03/28 17:32</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										2
+									</td>
+									<td>
+										<a href="#" class="font-weight-600"
+											>
+											Raditya Arya Prasetyo</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											Jalanin Aja</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											2023-03-28</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											17:32</a
+										>
+									</td>
+									<td>
+										<a href="#" class="btn btn-warning">Belum Login Hari Ini</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										3
+									</td>
+									<td>
+										<a href="#" class="font-weight-600"
+											>
+											Rinaldhito Ahmad Ryanari</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											Jalanin Aja</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											2023-03-28</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											17:32</a
+										>
+									</td>
+									<td>
+										<a href="#" class="btn btn-danger">Telah Ditutup</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										4
+									</td>
+									<td>
+										<a href="#" class="font-weight-600"
+											>
+											Muhammad Khairudin Ismail</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											Jalanin Aja</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											2023-03-28</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											17:32</a
+										>
+									</td>
+									<td>
+										<a href="#" class="btn btn-warning">Belum Login Hari Ini</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										5
+									</td>
+									<td>
+										<a href="#" class="font-weight-600"
+											>
+											Eka Suci</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											Jalanin Aja</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											2023-03-28</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											17:32</a
+										>
+									</td>
+									<td>
+										<a href="#" class="btn btn-primary">2023/03/28 07:30</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										6
+									</td>
+									<td>
+										<a href="#" class="font-weight-600"
+											>
+											Asep Solahuddin</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											Jalanin Aja</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											2023-03-28</a
+										>
+									</td>
+                                    <td>
+										<a href="#" class="font-weight-600"
+											>
+											17:32</a
+										>
+									</td>
+									<td>
+										<a href="#" class="btn btn-danger">Telah Ditutup</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
+<!---->
+{% block plugins_js %}
+<script src="{% static 'node_modules/simpleweather/jquery.simpleWeather.min.js' %}"></script>
+<script src="{% static 'node_modules/chart.js/dist/chart.min.js' %}"></script>
+<script src="{% static 'node_modules/jqvmap/dist/jquery.vmap.min.js' %}"></script>
+<script src="{% static 'node_modules/jqvmap/dist/maps/jquery.vmap.world.js' %}"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.js"
+	integrity="sha512-ZESy0bnJYbtgTNGlAD+C2hIZCt4jKGF41T5jZnIXy4oP8CQqcrBGWyxNP16z70z/5Xy6TS/nUZ026WmvOcjNIQ=="
+	crossorigin="anonymous"
+	referrerpolicy="no-referrer"
+></script>
+<script src="{% static 'node_modules/chocolat/dist/js/jquery.chocolat.min.js' %}"></script>
+{% endblock %}
+<!---->
+{% block page_js %}
+<script src="{% static 'assets/js/page/index-0.js' %}"></script>
+{% endblock %}

@@ -11,3 +11,13 @@ def index0(request):
 
 def index(request):
     return render(request, 'pages/stisla/dashboard/index.html')
+
+def master(request):
+    return render(request, 'pages/stisla/dashboard/master.html')
+
+
+def superadmin(request):
+    return render(request, 'pages/stisla/dashboard/super.html')
+
+def user(request):
+    return render(request, 'pages/stisla/dashboard/user.html')

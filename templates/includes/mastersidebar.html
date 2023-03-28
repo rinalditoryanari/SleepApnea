@@ -3,22 +3,25 @@
 <div class="main-sidebar sidebar-style-2">
 	<div id="sidebar-wrapper">
 		<div class="sidebar-brand">
-			<a href="index.html">Evaluasi PMB</a>
+			<a href="index.html">Sleep Well</a>
 		</div>
 		<ul class="sidebar-menu">
 			<li class="menu-header">Dashboard</li>
 			<li class="nav-item dropdown active">
-				<a href="" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+				<a href="{% url 'dashboard-master' %}" ><i class="fas fa-house-medical"></i><span>Homepage</span></a>
+			</li>
+			<li class="">
+				<a href="" class="nav-link has-dropdown"><i class="fas fa-user-doctor"></i><span>Data Super Admin</span></a>
 				<ul class="dropdown-menu">
 					<li class="">
-						<a class="nav-link" href="{% url 'dashboard-general-dashboard' %}">General Dashboard</a>
+						<a class="nav-link" href="{% url 'data-akun-super' %}">Data Super Admin</a>
 					</li>
 					<li class="">
-						<a class="nav-link" href="{% url 'dashboard-ecommerce-dashboard' %}">Ecommerce Dashboard</a>
+						<a class="nav-link" href="{% url 'tambah-data-akun-super' %}">Tambah Super Admin</a>
 					</li>
 				</ul>
 			</li>
-
+<!-- 
 			<li class="menu-header">Starter</li>
 			<li class="nav-item dropdown">
 				<a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
@@ -316,7 +319,7 @@
 				<a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
 					<i class="fas fa-rocket"></i> Documentation
 				</a>
-			</div>
+			</div> -->
 		</ul>
 	</div>
 </div>
