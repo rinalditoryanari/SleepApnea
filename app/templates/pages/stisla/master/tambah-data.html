@@ -29,39 +29,64 @@
                 <div class="card-header">
                     <h4 class="my-2">Tambah Akun Super Admin</h4>
                 </div>
-                <form id="bindingFrom" url="#" action="#">
-                    
+                <form action="#" method="POST">
+                    {% csrf_token %}
                     <div class="card-body">
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">ID Nurse</label>
                             <div class="col-sm-12 col-md-7">
                                 <input type="text" id="id" name="id_nurse" class="form-control" required placeholder="ID Nurse"/>
                                 <!-- <input type="text" id="id_obj" name="id_obj" class="form-control" hidden /> -->
+                                <div class="invalid-feedback">Please fill in your Id Nurse</div>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Rumah Sakit</label>
                             <div class="col-sm-12 col-md-7">
                                 <input type="text" id="rs" name="rs" class="form-control" required placeholder="Nama Rumah Sakit"/>
+                                <div class="invalid-feedback">Please fill in your Rumah Sakit</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">ID RS</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" id="id_rs" name="id_rs" class="form-control" required placeholder="ID Rumah Sakit"/>
+                                <div class="invalid-feedback">Please fill in your ID Rumah Sakit</div>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Username</label>
                             <div class="col-sm-12 col-md-7">
                                 <input type="text" id="username" name="username" class="form-control" placeholder="Username" required />
+                                <div class="invalid-feedback">Please fill in your Username</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Lengkap</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Nama Lengkap" required />
+                                <div class="invalid-feedback">Please fill in your Full Name</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Email</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email" required />
+                                <div class="invalid-feedback">Please fill in your email</div>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Password</label>
                             <div class="col-sm-12 col-md-7">
                                 <input type="password" id="password" name="password" class="form-control" placeholder="Pasword" required />
+                                <div class="invalid-feedback">Please fill in your password</div>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                             <div class="col-sm-12 col-md-7">
-                                <button class="btn btn-success" type="button" onclick="binding()">Submit</button>
-                                <input class="btn btn-danger ml-2" type="button" value="Close" onclick="tutup()">
+                                <button class="btn btn-success" type="submit" >Submit</button>
+                                <input class="btn btn-danger ml-2" onclick="history.back()" type="button" value="Close">
                             </div>
                         </div>
                     </div>

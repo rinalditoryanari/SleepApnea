@@ -11,6 +11,7 @@ urlpatterns = [
 
     path('', lambda request: redirect('auth-login2')),
 
+    path("auth-login2", login.login, name="auth-login2"),
     path('dashboard-general-dashboard', dashboard.index0,
          name='dashboard-general-dashboard'),
     path('dashboard-ecommerce-dashboard', dashboard.index,
@@ -21,8 +22,13 @@ urlpatterns = [
          name='dashboard-master'),
      path('data-akun-super', master.data,
          name='data-akun-super'),
-     path('tambah-data-akun-super', master.tambahdata,
+     path('tambah-data-akun-super', master.insertdata,
          name='tambah-data-akun-super'),
+     path('edit-data-akun-super/<str:id_nurse>', master.editdata,
+         name='edit-data-akun-super'),
+     path('delete-data-akun-super/<str:id_nurse>', master.destroy, 
+          name='delete-data-akun-super'),
+     
 
      #Super Admin
      path('dashboard-super', dashboard.superadmin,
@@ -31,6 +37,10 @@ urlpatterns = [
          name='data-akun-admin'),
      path('tambah-data-akun-admin', super.tambahdata,
          name='tambah-data-akun-admin'),   
+     path('edit-data-akun-admin/<str:id_admin>', super.editdata,
+         name='edit-data-akun-super'),
+     path('delete-data-akun-admin/<str:id_admin>', super.destroy, 
+          name='delete-data-akun-super'),
      path('data-pasien', super.pasien,
          name='data-pasien'),
      path('tambah-data-pasien', super.tambahpasien,
