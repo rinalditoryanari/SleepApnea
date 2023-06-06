@@ -1,5 +1,5 @@
 <!-- @format -->
-{% extends 'master.html' %}
+{% extends 'superadmin.html' %}
 <!---->
 {% load static %}
 <!---->
@@ -21,13 +21,13 @@
 {% block content %}
 <section class="section">
 	<div class="section-header">
-		<h1>Selamat Datang, Master Dashboard</h1>
+		<h1>Selamat Datang, Super Admin Dashboard</h1>
 	</div>
 	<div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="my-2">Edit Akun Super Admin</h4>
+                    <h4 class="my-2">Edit Akun Pasien</h4>
                 </div>
                 <form action="#" method="POST">
                     {% csrf_token %}
@@ -35,7 +35,7 @@
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">ID Nurse</label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="text" id="id" name="id_admin" class="form-control" required placeholder="ID Admin" value="{{admin.id_admin}}" readonly/>
+                                <input type="text" id="id" name="id_pasien" class="form-control" required placeholder="ID Pasien" value="{{pasien.id_pasien}}" readonly/>
                                 <!-- <input type="text" id="id_obj" name="id_obj" class="form-control" hidden /> -->
                                 <div class="invalid-feedback">Please fill in your Id Nurse</div>
                             </div>
@@ -43,28 +43,28 @@
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Rumah Sakit</label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="text" id="rs" name="rs" class="form-control" required placeholder="Nama Rumah Sakit" value="{{admin.rs}}"/>
+                                <input type="text" id="rs" name="rs" class="form-control" required placeholder="Nama Rumah Sakit" value="{{pasien.rs}}"/>
                                 <div class="invalid-feedback">Please fill in your Rumah Sakit</div>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">ID RS</label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="text" id="id_rs" name="id_rs" class="form-control" required placeholder="ID Rumah Sakit" value="{{admin.id_rs}}"/>
+                                <input type="text" id="id_rs" name="id_rs" class="form-control" required placeholder="ID Rumah Sakit" value="{{pasien.id_rs}}"/>
                                 <div class="invalid-feedback">Please fill in your ID Rumah Sakit</div>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Username</label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required  value="{{admin.username}}"/>
+                                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required  value="{{pasien.username}}"/>
                                 <div class="invalid-feedback">Please fill in your Username</div>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Lengkap</label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Nama Lengkap" required value="{{admin.nama_lengkap}}"/>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Nama Lengkap" required value="{{pasien.nama_lengkap}}"/>
                                 <div class="invalid-feedback">Please fill in your Full Name</div>
                             </div>
                         </div>

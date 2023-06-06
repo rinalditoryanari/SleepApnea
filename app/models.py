@@ -32,4 +32,15 @@ class Admin(models.Model):
     class Meta:  
         db_table = "admin"
 
+class Pasien(models.Model):
+    id_pasien= models.CharField(primary_key=True,max_length=200,blank=True)
+    rs=models.EmailField(max_length=500,blank=True)
+    id_rs=models.CharField(max_length=200,blank=True)
+    username=models.CharField(max_length=200,blank=True)
+    nama_lengkap=models.CharField(max_length=200,blank=True)
+    waktu_dibuat=models.CharField(max_length=200,blank=True)
+
+    class Meta:
+        db_table = "pasien"
+
 
