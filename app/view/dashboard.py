@@ -19,5 +19,8 @@ def master(request):
 def superadmin(request):
     return render(request, 'pages/stisla/dashboard/super.html')
 
+def admin(request):
+    return render(request, 'pages/stisla/dashboard/admin.html')
+
 def user(request):
     return render(request, 'pages/stisla/dashboard/user.html')

@@ -3,6 +3,7 @@ from django.utils import timezone
 from app.models import Super,User 
 from pprint import pprint
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import messages
 import mysql.connector as sql
 
 
@@ -63,6 +64,7 @@ def editdata(request,id_nurse):
         cursor.execute(d)
         m.commit()
         supeer = Super.objects.all()
+        messages.success(request,"Data Berhasil diedit !!")
         return render(request, 'pages/stisla/master/data-akun.html',{'supeer':supeer})
     return render(request, 'pages/stisla/master/edit-data.html',{'super':super,'user':user})
 
@@ -71,7 +73,8 @@ def destroy(request, id_nurse):
     user = User.objects.get(username=super.username)
     # pprint(super)
     super.delete()
-    user.delete() 
+    user.delete()
+    messages.success(request,"Data Berhasil dihapus !!") 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/data-akun-super'))
 
 
@@ -104,5 +107,6 @@ def insertdata(request):
         cursor.execute(d)
         m.commit()
         supeer= Super.objects.all()
+        messages.success(request,"Data berhasil ditambah !!")
         return render(request, 'pages/stisla/master/data-akun.html',{'supeer':supeer})
     return render(request, 'pages/stisla/master/tambah-data.html')

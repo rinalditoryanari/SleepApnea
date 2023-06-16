@@ -4,6 +4,8 @@ from .view import dashboard, layout, blankpage, bootstrap, components, forms, go
 from .view import login, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
 from .view import master, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
 from .view import super, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
+from .view import admin, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
+
 
 
 urlpatterns = [
@@ -47,10 +49,24 @@ urlpatterns = [
          name='tambah-data-pasien'),
      path('edit-data-akun-pasien/<str:id_pasien>', super.editpasien,
          name='edit-data-akun-pasien'),
+      path('delete-data-akun-pasien/<str:id_pasien>', super.hapuspasien,
+         name='delete-data-akun-pasien'),   
      path('riwayat-laporan', super.riwayatlaporan,
          name='riwayat-laporan'),
      path('tambah-rekaman', super.tambahrekaman,
-         name='tambah-rekaman'),  
+         name='tambah-rekaman'),
+
+     #Admin
+     path('dashboard-admin', dashboard.superadmin,
+         name='dashboard-admin'),
+     path('data-pasien', admin.pasien,
+         name='data-pasien'),
+     path('tambah-data-pasien', admin.insertpasien,
+         name='tambah-data-pasien'),
+     path('edit-data-akun-pasien/<str:id_pasien>', admin.editpasien,
+         name='edit-data-akun-pasien'),
+      path('delete-data-akun-pasien/<str:id_pasien>', admin.hapuspasien,
+         name='delete-data-akun-pasien'),
 
 
      # auth

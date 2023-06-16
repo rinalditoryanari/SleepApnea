@@ -27,7 +27,8 @@ def login(request):
                 return render(request,"pages/stisla/dashboard/master.html")
             elif a=='super':
                 return render(request,"pages/stisla/dashboard/super.html")
-        
+            elif a=='admin':
+                return render(request,"pages/stisla/dashboard/admin.html")
     return render(request, 'pages/stisla/auth/auth-login-2.html')
 
 
