@@ -22,14 +22,21 @@ def predict_api(request):
 
         predictions = model.predict(eeg_file)
 
-        # percentage of certainty????
-        percent = np.round((1 - predictions)*100)
+        if np.round(predictions) >= 0.5:
+            # percentage of certainty????
+            percent = np.round(predictions*100)
+            name = "Sleep Apnea"
+        else:
+            # percentage of certainty????
+            percent = np.round((1 - predictions)*100)
+            name = "Normal"
 
         predictions = predictions.reshape(predictions.shape[1])
         predictions = np.round(predictions)
 
         response = {
             'predictions': str(predictions[0]),
+            'description': name,
             'percentage': str(percent[0][0]) + "%",
         }
         return JsonResponse(response)
