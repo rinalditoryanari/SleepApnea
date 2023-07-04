@@ -69,6 +69,20 @@
                             </div>
                         </div>
                         <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">No Telepon</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" value="{{super.no_telp}}" id="no_telp" name="no_telp" class="form-control" placeholder="No Telepon" required />
+                                <div class="invalid-feedback">Please fill in your no_telp</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Alamat</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Alamat" required value="{{super.alamat}}"/>
+                                <div class="invalid-feedback">Please fill in your alamat</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Email</label>
                             <div class="col-sm-12 col-md-7">
                                 <input type="email" id="email" name="email" class="form-control" placeholder="Email" required value="{{user.email}}"/>

@@ -57,16 +57,16 @@ urlpatterns = [
          name='tambah-rekaman'),
 
      #Admin
-     path('dashboard-admin', dashboard.superadmin,
+     path('dashboard-admin', dashboard.admin,
          name='dashboard-admin'),
-     path('data-pasien', admin.pasien,
-         name='data-pasien'),
-     path('tambah-data-pasien', admin.insertpasien,
-         name='tambah-data-pasien'),
-     path('edit-data-akun-pasien/<str:id_pasien>', admin.editpasien,
-         name='edit-data-akun-pasien'),
-      path('delete-data-akun-pasien/<str:id_pasien>', admin.hapuspasien,
-         name='delete-data-akun-pasien'),
+     path('data-pasien-admin', admin.pasien,
+         name='data-pasien-admin'),
+     path('tambah-data-pasien-admin', admin.insertpasien,
+         name='tambah-data-pasien-admin'),
+     path('edit-data-akun-pasien-admin/<str:id_pasien>', admin.editpasien,
+         name='edit-data-akun-pasien-admin'),
+      path('delete-data-akun-pasien-admin/<str:id_pasien>', admin.hapuspasien,
+         name='delete-data-akun-pasien-admin'),
 
 
      # auth

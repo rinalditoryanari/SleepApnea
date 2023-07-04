@@ -6,6 +6,11 @@ class Super(models.Model):
     username=models.CharField(max_length=200,blank=True)
     nama_lengkap=models.CharField(max_length=200,blank=True)
     waktu_dibuat=models.CharField(max_length=200,blank=True)
+    tanggal_lahir=models.CharField(max_length=200,blank=True)
+    usia=models.CharField(max_length=200,blank=True)
+    jenis_kelamin=models.CharField(max_length=200,blank=True)
+    alamat=models.CharField(max_length=200,blank=True)
+    no_telp=models.CharField(max_length=200,blank=True)
     
     class Meta:  
         db_table = "super"
@@ -28,7 +33,11 @@ class Admin(models.Model):
     username=models.CharField(max_length=200,blank=True)
     nama_lengkap=models.CharField(max_length=200,blank=True)
     waktu_dibuat=models.CharField(max_length=200,blank=True)
-    
+    tanggal_lahir=models.CharField(max_length=200,blank=True)
+    usia=models.CharField(max_length=200,blank=True)
+    jenis_kelamin=models.CharField(max_length=200,blank=True)
+    alamat=models.CharField(max_length=200,blank=True)
+    no_telp=models.CharField(max_length=200,blank=True)
     class Meta:  
         db_table = "admin"
 
@@ -39,7 +48,11 @@ class Pasien(models.Model):
     username=models.CharField(max_length=200,blank=True)
     nama_lengkap=models.CharField(max_length=200,blank=True)
     waktu_dibuat=models.CharField(max_length=200,blank=True)
-
+    tanggal_lahir=models.CharField(max_length=200,blank=True)
+    usia=models.CharField(max_length=200,blank=True)
+    jenis_kelamin=models.CharField(max_length=200,blank=True)
+    alamat=models.CharField(max_length=200,blank=True)
+    no_telp=models.CharField(max_length=200,blank=True)
     class Meta:
         db_table = "pasien"
 

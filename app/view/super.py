@@ -5,6 +5,8 @@ from pprint import pprint
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 import mysql.connector as sql
+from datetime import date,datetime, timedelta
+
 
 id=''
 rs=''
@@ -13,6 +15,10 @@ em=''
 pwd=''
 nama=''
 id_rs=''
+tgl_lahir=''
+jk=''
+telp=''
+alamat=''
 now = timezone.now()
 
 def data(request):
@@ -20,7 +26,7 @@ def data(request):
     return render(request, 'pages/stisla/super/data-akun.html',{'admins':admins})
 
 def tambahdata(request):
-    global id,rs,usr,em,pwd
+    global id,rs,usr,em,pwd,tgl_lahir,jk,telp,alamat
     if request.method=="POST":
         m=sql.connect(host="localhost",user="root",passwd="",database='test')
         cursor=m.cursor()
@@ -40,11 +46,22 @@ def tambahdata(request):
                 em=value
             if key=="password":
                 pwd=value
-        
+            if key=="tgl_lahir":
+                tgl_lahir=value
+            if key=="jenis_kelamin":
+                jk=value
+            if key=="no_telp":
+                telp=value
+            if key=="alamat":
+                alamat=value
+        tgl = datetime.strptime(tgl_lahir,"%Y-%m-%d")
+        today = datetime.now()
+        age = today - tgl
+        age_year = age.days // 365
         c="insert into users Values('{}','{}','{}','{}')".format(usr,em,pwd,"admin")
         cursor.execute(c)
         m.commit()
-        d="insert into admin Values('{}','{}','{}','{}','{}','{}')".format(id,rs,id_rs,usr,nama,now)
+        d="insert into admin Values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(id,rs,id_rs,usr,nama,now,tgl_lahir,age_year,jk,alamat,telp)
         cursor.execute(d)
         m.commit()
         admins= Admin.objects.all()
@@ -78,8 +95,11 @@ def editdata(request,id_admin):
                 em=value
             if key=="password":
                 pwd=value
-        
-        c="update admin set id_admin='{}',rs='{}',id_rs='{}',username='{}',nama_lengkap='{}' where username ='{}' ".format(id,rs,id_rs,usr,nama,username_lama)
+            if key=="no_telp":
+                telp=value
+            if key=="alamat":
+                alamat=value
+        c="update admin set id_admin='{}',rs='{}',id_rs='{}',username='{}',nama_lengkap='{}',alamat='{}',no_telp='{}' where username ='{}' ".format(id,rs,id_rs,usr,nama,alamat,telp,username_lama)
         cursor.execute(c)
         m.commit()
         d="update users set username='{}',email='{}',password='{}' where username ='{}' ".format(usr,em,pwd,username_lama)
@@ -95,9 +115,11 @@ def destroy(request, id_admin):
     user = User.objects.get(username=admin.username)
     # pprint(admin)
     admin.delete()
-    user.delete() 
+    user.delete()
+    admins = Admin.objects.all()
     messages.success(request,"Data Berhasil dihapus !!")
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    return render(request, 'pages/stisla/super/data-akun.html',{'admins':admins})
+    
 
 def insertpasien(request):
     global id,rs,usr,em,pwd
@@ -120,11 +142,22 @@ def insertpasien(request):
                 em=value
             if key=="password":
                 pwd=value
-        
+            if key=="tgl_lahir":
+                tgl_lahir=value
+            if key=="jenis_kelamin":
+                jk=value
+            if key=="no_telp":
+                telp=value
+            if key=="alamat":
+                alamat=value
+        tgl = datetime.strptime(tgl_lahir,"%Y-%m-%d")
+        today = datetime.now()
+        age = today - tgl
+        age_year = age.days // 365
         c="insert into users Values('{}','{}','{}','{}')".format(usr,em,pwd,"pasien")
         cursor.execute(c)
         m.commit()
-        d="insert into pasien Values('{}','{}','{}','{}','{}','{}')".format(id,rs,id_rs,usr,nama,now)
+        d="insert into pasien Values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(id,rs,id_rs,usr,nama,now,tgl_lahir,age_year,jk,alamat,telp)
         cursor.execute(d)
         m.commit()
         pasiens= Pasien.objects.all()
@@ -162,8 +195,12 @@ def editpasien(request,id_pasien):
                 em=value
             if key=="password":
                 pwd=value
+            if key=="no_telp":
+                telp=value
+            if key=="alamat":
+                alamat=value    
         
-        c="update pasien set id_pasien='{}',rs='{}',id_rs='{}',username='{}',nama_lengkap='{}' where username ='{}' ".format(id,rs,id_rs,usr,nama,username_lama)
+        c="update pasien set id_pasien='{}',rs='{}',id_rs='{}',username='{}',nama_lengkap='{}',alamat='{}',no_telp='{}' where username ='{}' ".format(id,rs,id_rs,usr,nama,alamat,telp,username_lama)
         cursor.execute(c)
         m.commit()
         d="update users set username='{}',email='{}',password='{}' where username ='{}' ".format(usr,em,pwd,username_lama)
@@ -180,8 +217,9 @@ def hapuspasien(request, id_pasien):
     # pprint(admin)
     pasien.delete()
     user.delete()
+    pasiens = Pasien.objects.all()
     messages.success(request,"Data Berhasil dihapus !!") 
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    return render(request, 'pages/stisla/super/data-pasien.html',{'pasiens':pasiens})
 
 def tambahpasien(request):
     return render(request, 'pages/stisla/super/tambah-pasien.html')

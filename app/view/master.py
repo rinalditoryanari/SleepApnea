@@ -4,8 +4,8 @@ from app.models import Super,User
 from pprint import pprint
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
+from datetime import date,datetime, timedelta
 import mysql.connector as sql
-
 
 id=''
 rs=''
@@ -14,6 +14,10 @@ em=''
 pwd=''
 nama=''
 id_rs=''
+tgl_lahir=''
+jk=''
+telp=''
+alamat=''
 now = timezone.now()
 
 def data(request):
@@ -35,7 +39,7 @@ def editdata(request,id_nurse):
     super= Super.objects.get(id_nurse=id_nurse)
     user = User.objects.get(username=super.username)
     # pprint(user)global id,rs,usr,em,pwd
-    global id,rs,usr,em,pwd
+    global id,rs,usr,em,pwd,tgl_lahir,jk,telp,alamat
     username_lama = user.username
     if request.method=="POST":
         m=sql.connect(host="localhost",user="root",passwd="",database='test')
@@ -56,8 +60,15 @@ def editdata(request,id_nurse):
                 em=value
             if key=="password":
                 pwd=value
-        
-        c="update super set id_nurse='{}',rs='{}',id_rs='{}',username='{}',nama_lengkap='{}' where username ='{}' ".format(id,rs,id_rs,usr,nama,username_lama)
+            if key=="tgl_lahir":
+                tgl_lahir=value
+            if key=="jenis_kelamin":
+                jk=value
+            if key=="no_telp":
+                telp=value
+            if key=="alamat":
+                alamat=value
+        c="update super set id_nurse='{}',rs='{}',id_rs='{}',username='{}',nama_lengkap='{}',alamat='{}',no_telp='{}' where username ='{}' ".format(id,rs,id_rs,usr,nama,alamat,telp,username_lama)
         cursor.execute(c)
         m.commit()
         d="update users set username='{}',email='{}',password='{}' where username ='{}' ".format(usr,em,pwd,username_lama)
@@ -74,12 +85,13 @@ def destroy(request, id_nurse):
     # pprint(super)
     super.delete()
     user.delete()
+    supeer = Super.objects.all()
     messages.success(request,"Data Berhasil dihapus !!") 
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/data-akun-super'))
+    return render(request, 'pages/stisla/master/data-akun.html',{'supeer':supeer})
 
 
 def insertdata(request):
-    global id,rs,usr,em,pwd
+    global id,rs,usr,em,pwd,tgl_lahir,jk,telp,alamat
     if request.method=="POST":
         m=sql.connect(host="localhost",user="root",passwd="",database='test')
         cursor=m.cursor()
@@ -99,11 +111,23 @@ def insertdata(request):
                 em=value
             if key=="password":
                 pwd=value
-        
+            if key=="tgl_lahir":
+                tgl_lahir=value
+            if key=="jenis_kelamin":
+                jk=value
+            if key=="no_telp":
+                telp=value
+            if key=="alamat":
+                alamat=value
+        tgl = datetime.strptime(tgl_lahir,"%Y-%m-%d")
+        today = datetime.now()
+        age = today - tgl
+        age_year = age.days // 365
+        # pprint(age_year)
         c="insert into users Values('{}','{}','{}','{}')".format(usr,em,pwd,"super")
         cursor.execute(c)
         m.commit()
-        d="insert into super Values('{}','{}','{}','{}','{}','{}')".format(id,rs,id_rs,usr,nama,now)
+        d="insert into super Values('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(id,rs,id_rs,usr,nama,now,tgl_lahir,age_year,jk,alamat,telp)
         cursor.execute(d)
         m.commit()
         supeer= Super.objects.all()

@@ -66,7 +66,18 @@
 		</div>
 	</div>
 </section>
+{% for message in messages %}
+	{% if message.tags == 'success' %}
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		var m = "{{ message }}";
+		swal("Success !!", m , "success")
+	</script>
+	{% endif %}
+{% endfor %}
 {% endblock %}
+
+
 <!---->
 {% block plugins_js %}
 <script src="{% static 'node_modules/simpleweather/jquery.simpleWeather.min.js' %}"></script>
@@ -89,6 +100,7 @@
 	} );
 </script>
 <script src="{% static 'node_modules/chocolat/dist/js/jquery.chocolat.min.js' %}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {% endblock %}
 <!---->
 {% block page_js %}

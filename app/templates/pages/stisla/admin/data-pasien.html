@@ -3,7 +3,7 @@
 <!---->
 {% load static %}
 <!---->
-{% block title %}Master Dashboard{% endblock title %}
+{% block title %}Admin Dashboard{% endblock title %}
 <!---->
 {% block plugins_css %}
 <link href="{% static 'node_modules/jqvmap/dist/jqvmap.min.css' %}" />
@@ -54,8 +54,8 @@
 									<td>{{ pasien.username }}</td>  
 									<td>{{ pasien.id_pasien }}</td>  
 									<td>{{ pasien.waktu_dibuat }}</td>  
-									<td><a href="/edit-data-akun-pasien/{{pasien.id_pasien}}" class="btn btn-primary">Edit</a>
-									<a href="/delete-data-akun-pasien/{{pasien.id_pasien}}" class="btn btn-danger">Delete</a></td>
+									<td><a href="/edit-data-akun-pasien-admin/{{pasien.id_pasien}}" class="btn btn-primary">Edit</a>
+									<a href="/delete-data-akun-pasien-admin/{{pasien.id_pasien}}" class="btn btn-danger">Delete</a></td>
 								</tr>  
 							{% endfor %}
 							</tbody>
@@ -66,6 +66,15 @@
 		</div>
 	</div>
 </section>
+{% for message in messages %}
+	{% if message.tags == 'success' %}
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		var m = "{{ message }}";
+		swal("Success !!", m , "success")
+	</script>
+	{% endif %}
+{% endfor %}
 {% endblock %}
 <!---->
 {% block plugins_js %}
