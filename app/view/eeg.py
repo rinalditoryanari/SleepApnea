@@ -5,8 +5,8 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras.models import load_model
 
-model = load_model(
-    "sources/model/2023-06-26_13-19-38_CNN_Raw")
+# model = load_model(
+#     "sources/model/2023-06-26_13-19-38_CNN_Raw")
 
 
 @csrf_exempt

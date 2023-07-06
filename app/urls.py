@@ -5,7 +5,7 @@ from .view import login, layout, blankpage, bootstrap, components, forms, google
 from .view import master, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
 from .view import super, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
 from .view import admin, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
-from .view import eeg
+from .view import eeg, ecg
 
 
 urlpatterns = [
@@ -21,6 +21,7 @@ urlpatterns = [
 
      #Model
          path('api/predict-eeg', eeg.predict_api, name='api_predicteeg'),
+         path('api/predict-ecg', ecg.predict, name='api_predicteeg'),
 
      #Master
      path('dashboard-master', dashboard.master,
