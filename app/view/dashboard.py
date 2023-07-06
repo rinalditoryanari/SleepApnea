@@ -22,5 +22,5 @@ def superadmin(request):
 def admin(request):
     return render(request, 'pages/stisla/dashboard/admin.html')
 
-def user(request):
-    return render(request, 'pages/stisla/dashboard/user.html')
+def pasien(request):
+    return render(request, 'pages/stisla/dashboard/pasien.html')

@@ -1,10 +1,13 @@
 from django.urls import path
 from django.shortcuts import redirect
 from .view import dashboard, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
-from .view import login, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
-from .view import master, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
-from .view import super, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
-from .view import admin, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
+from .view import login
+from .view import master
+from .view import super
+from .view import admin
+from .view import loginAPI
+from .view import pasien
+from .view import API_Pasien
 
 
 
@@ -67,6 +70,20 @@ urlpatterns = [
          name='edit-data-akun-pasien-admin'),
       path('delete-data-akun-pasien-admin/<str:id_pasien>', admin.hapuspasien,
          name='delete-data-akun-pasien-admin'),
+
+     #Pasien
+     path('dashboard-pasien', dashboard.pasien,
+         name='dashboard-pasien'),
+     path('edit-data-akun/<str:username>', pasien.editpasien,
+         name='edit-data-akun'),
+
+     #LoginAPI
+     path('loginAPI', loginAPI.loginAPI,
+         name='loginAPI'),
+
+     #cekidpasien
+     path('cekIDPasien', API_Pasien.cekid_pasien,
+          name='cekIDPasien'),
 
 
      # auth
