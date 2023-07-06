@@ -38,10 +38,10 @@
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" placeholder="" aria-label="" mame="id_pasien" id="id_pasien">
                                     <div class="input-group-append">
-                                      <button class="btn btn-primary" type="button">Button</button>
+                                      <button class="btn btn-primary" type="button" onclick="cekid_pasien()">Button</button>
                                     </div>
                                   </div>
-                                  <p class="my-0" hidden>Nama Lengkap</p>
+                                  <p class="my-0" id="nama_lengkap" hidden>Nama Lengkap</p>
 
                                 <!-- <input type="text" id="id_obj" name="id_obj" class="form-control" hidden /> -->
                             </div>
@@ -51,7 +51,7 @@
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jenis Fisiologis</label>
                             <div class="col-sm-12 col-md-7">
                                 <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
-                                    <option value="none" selected disabled hidden>Pilih Jenis Kelamin</option>
+                                    <option value="none" selected disabled hidden>Pilih Jenis Fisiologis</option>
                                     <option value="Laki-Laki">Otak - EEG</option>
                                     <option value="Perempuan">Jantung - ECG</option>
                                   </select>
