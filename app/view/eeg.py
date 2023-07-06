@@ -6,7 +6,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 
 model = load_model(
-    "sources/model/2023-06-26_13-19-38_CNN_Raw")
+    "sources/model/2023-07-03_02-06-56_CNN_Raw")
 
 
 @csrf_exempt
@@ -16,9 +16,11 @@ def predict_api(request):
         eeg_file = request.FILES['eeg_file']
 
         eeg_file = extract_file(eeg_file)
+        print(eeg_file.shape)
 
         # alternatively, you can reshape the array to match the desired axes
         eeg_file = eeg_file.reshape(1, eeg_file.shape[0], 1)
+        print(eeg_file.shape)
 
         predictions = model.predict(eeg_file)
 

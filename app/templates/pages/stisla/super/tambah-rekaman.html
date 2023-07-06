@@ -50,7 +50,7 @@
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jenis Fisiologis</label>
                             <div class="col-sm-12 col-md-7">
-                                <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
+                                <select name="jenis_fisiologis" id="jenis_fisiologis" class="form-control">
                                     <option value="none" selected disabled hidden>Pilih Jenis Fisiologis</option>
                                     <option value="Laki-Laki">Otak - EEG</option>
                                     <option value="Perempuan">Jantung - ECG</option>
@@ -60,15 +60,24 @@
                         </div>
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">File Fisiologis</label>
-                            <div class="custom-file col-sm-12 col-md-7">
-                                <input type="file" class="form-control custom-file-input " id="customFile">
-                                <label class="custom-file-label mx-3" for="customFile">Choose file</label>
-                              </div>
+                            <div class=" col-sm-12 col-md-7">
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                        <input type="file" class="choose custom-file-input col-10" id="file_predict">
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button" onclick="eeg_predict()">Button</button>
+                                    </div>    
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group row mb-4">
-                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Password</label>
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Hasil Deteksi</label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="password" id="password" name="password" class="form-control" placeholder="Pasword" required />
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="" aria-label="" mame="result" id="result" readonly>
+                                  </div>
                             </div>
                         </div>
                         <div class="form-group row mb-4">

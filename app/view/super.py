@@ -221,6 +221,32 @@ def hapuspasien(request, id_pasien):
     messages.success(request,"Data Berhasil dihapus !!") 
     return render(request, 'pages/stisla/super/data-pasien.html',{'pasiens':pasiens})
 
+def simpan_deteksi(request):
+    global id_pasien,sinyal,usr,em,pwd
+    if request.method=="POST":
+        m=sql.connect(host="localhost",user="root",passwd="",database='test')
+        cursor=m.cursor()
+        d=request.POST
+        for key,value in d.items():
+            if key=="id_pasien":
+                id_pasien=value
+            if key=="rs":
+                rs=value
+            if key=="id_rs":
+                id_rs=value
+            if key=="name":
+                nama=value
+            if key=="username":
+                usr=value
+            if key=="email":
+                em=value
+            if key=="password":
+                pwd=value
+            if key=="no_telp":
+                telp=value
+            if key=="alamat":
+                alamat=value    
+
 def tambahpasien(request):
     return render(request, 'pages/stisla/super/tambah-pasien.html')
 
