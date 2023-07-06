@@ -8,7 +8,7 @@ from .view import admin
 from .view import loginAPI
 from .view import pasien
 from .view import API_Pasien
-
+from .view import eeg
 
 
 urlpatterns = [
@@ -21,6 +21,9 @@ urlpatterns = [
          name='dashboard-general-dashboard'),
     path('dashboard-ecommerce-dashboard', dashboard.index,
          name='dashboard-ecommerce-dashboard'),
+
+     #Model
+         path('api/predict-eeg', eeg.predict_api, name='api_predicteeg'),
 
      #Master
      path('dashboard-master', dashboard.master,
