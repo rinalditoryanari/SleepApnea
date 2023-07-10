@@ -28,14 +28,37 @@
 		<div class="col-3 col-sm-12">
 			<div class="card">
 				<div class="card-header">
-					<h4>Data Pasien</h4>
+					<h4>Data Admin</h4>
 					<div class="card-header-action">
 						<a href="#" class="btn btn-primary">Selengkapnya &nbsp; ></a>
 					</div>
 				</div>
-				<div class="card-body" id="konten">
-					<div class="table-responsive p-0" id="table-responsive">
-						<table id="table-pasien" class="table table-striped mb-0">
+				<div class="card-body p-0">
+					<div class="table-responsive">
+						<table id="table-admin" class="table table-striped mb-0">
+							<thead>
+								<tr>
+									<th>ID RS</th>
+                                    <th>Nama Lengkap</th>
+									<th>Username</th>
+									<th>ID Admin</th>
+                                    <th>Waktu Dibuat</th>
+                                    <th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for admin in admins %}
+								<tr>  
+									<td>{{ admin.id_rs }}</td>  
+									<td>{{ admin.nama_lengkap }}</td>  
+									<td>{{ admin.username }}</td>  
+									<td>{{ admin.id_admin }}</td>  
+									<td>{{ admin.waktu_dibuat }}</td>  
+									<td><a href="/edit-data-akun-admin/{{admin.id_admin}}" class="btn btn-primary">Edit</a>
+									<a href="/delete-data-akun-admin/{{admin.id_admin}}" class="btn btn-danger">Delete</a></td>
+								</tr>  
+							{% endfor %}
+							</tbody>
 						</table>
 					</div>
 				</div>
@@ -53,6 +76,8 @@
 	{% endif %}
 {% endfor %}
 {% endblock %}
+
+
 <!---->
 {% block plugins_js %}
 <script src="{% static 'node_modules/simpleweather/jquery.simpleWeather.min.js' %}"></script>
@@ -65,12 +90,21 @@
 	crossorigin="anonymous"
 	referrerpolicy="no-referrer"
 ></script>
+<script>
+	$(document).ready(function() {
+		$('#table-admin').DataTable({     
+		  "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+			"iDisplayLength": 10
+		   } 
+		);
+	} );
+</script>
 <script src="{% static 'node_modules/chocolat/dist/js/jquery.chocolat.min.js' %}"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {% endblock %}
 <!---->
 {% block page_js %}
 <script src="{% static 'assets/js/page/index-0.js' %}"></script>
-<script src="{% static 'assets/js/halaman/data-pasien-super.js' %}"></script>
+<script src="{% static 'assets/js/halaman/data-admin-super.js' %}"></script>
 
 {% endblock %}

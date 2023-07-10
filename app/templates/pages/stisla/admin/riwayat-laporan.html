@@ -1,9 +1,9 @@
 <!-- @format -->
-{% extends 'superadmin.html' %}
+{% extends 'admin.html' %}
 <!---->
 {% load static %}
 <!---->
-{% block title %}Master Dashboard{% endblock title %}
+{% block title %}Admin Dashboard{% endblock title %}
 <!---->
 {% block plugins_css %}
 <link href="{% static 'node_modules/jqvmap/dist/jqvmap.min.css' %}" />
@@ -22,20 +22,20 @@
 {% block content %}
 <section class="section">
 	<div class="section-header">
-		<h1>Selamat Datang, Super Admin Dashboard</h1>
+		<h1>Selamat Datang, Admin Dashboard</h1>
 	</div>
 	<div class="row">
 		<div class="col-3 col-sm-12">
 			<div class="card">
 				<div class="card-header">
-					<h4>Data Pasien</h4>
+					<h4>Riwayat Deteksi</h4>
 					<div class="card-header-action">
 						<a href="#" class="btn btn-primary">Selengkapnya &nbsp; ></a>
 					</div>
 				</div>
 				<div class="card-body" id="konten">
 					<div class="table-responsive p-0" id="table-responsive">
-						<table id="table-pasien" class="table table-striped mb-0">
+						<table id="table-deteksi" class="table table-striped mb-0">
 						</table>
 					</div>
 				</div>
@@ -66,11 +66,12 @@
 	referrerpolicy="no-referrer"
 ></script>
 <script src="{% static 'node_modules/chocolat/dist/js/jquery.chocolat.min.js' %}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 {% endblock %}
 <!---->
 {% block page_js %}
 <script src="{% static 'assets/js/page/index-0.js' %}"></script>
-<script src="{% static 'assets/js/halaman/data-pasien-super.js' %}"></script>
+<script src="{% static 'assets/js/halaman/data-deteksi.js' %}"></script>
 
 {% endblock %}

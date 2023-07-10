@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.utils import timezone
-from app.models import Super,User,Admin,Pasien
+from app.models import Super,User,Admin,Pasien,Rekaman
 from pprint import pprint
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
@@ -116,4 +116,38 @@ def hapuspasien(request, id_pasien):
     pasiens = Pasien.objects.all()
     messages.success(request,"Data Berhasil dihapus !!") 
     return render(request, 'pages/stisla/admin/data-pasien.html',{'pasiens':pasiens})
+
+def simpan_deteksi(request):
+    global id_pasien,sinyal,jenis,waktu
+    if request.method=="POST":
+        m=sql.connect(host="localhost",user="root",passwd="",database='test')
+        cursor=m.cursor()
+        d=request.POST
+        for key,value in d.items():
+            if key=="id_pasien1":
+                id_pasien=value
+            if key=="jenis_fisiologis":
+                sinyal=value
+            if key=="result":
+                hasil=value
+            if key=="waktu_rekaman":
+                waktu=value      
+        c="select * from pasien where id_pasien='{}'".format(id_pasien)
+        cursor.execute(c)
+        t=tuple(cursor.fetchone())
+        usia= str(t[7])
+        nama_lengkap = str(t[4])
+        id_rs=str(t[2])
+        d="insert into rekaman Values('{}','{}','{}','{}','{}','{}','{}')".format(id_pasien,id_rs,nama_lengkap,usia,waktu,hasil,sinyal)
+        cursor.execute(d)
+        m.commit()
+        rekamans= Rekaman.objects.all()
+        messages.success(request,"Data Berhasil ditambah !!")
+        return render(request, 'pages/stisla/admin/riwayat-laporan.html',{'rekamans':rekamans})
+    return render(request, 'pages/stisla/admin/tambah-rekaman.html')
+
+def riwayatlaporan(request):
+    rekamans= Rekaman.objects.all()
+    return render(request, 'pages/stisla/admin/riwayat-laporan.html',{'rekamans':rekamans})
+
     

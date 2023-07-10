@@ -7,8 +7,8 @@ from .view import super
 from .view import admin
 from .view import loginAPI
 from .view import pasien
-from .view import API_Pasien
-from .view import eeg
+from .view import API_Pasien, API_Admin, API_Super
+from .view import eeg,ecg
 
 
 urlpatterns = [
@@ -23,7 +23,8 @@ urlpatterns = [
          name='dashboard-ecommerce-dashboard'),
 
      #Model
-         path('api/predict-eeg', eeg.predict_api, name='api_predicteeg'),
+     path('api/predict-eeg', eeg.predict_api, name='api_predicteeg'),
+     path('api/predict-ecg',ecg.predict_api, name='api_predictecg'),
 
      #Master
      path('dashboard-master', dashboard.master,
@@ -43,6 +44,8 @@ urlpatterns = [
          name='dashboard-super'),
      path('data-akun-admin', super.data,
          name='data-akun-admin'),
+     path('api/data-akun-admin', API_Super.admin,
+         name='api-data-akun-admin'),
      path('tambah-data-akun-admin', super.tambahdata,
          name='tambah-data-akun-admin'),   
      path('edit-data-akun-admin/<str:id_admin>', super.editdata,
@@ -51,15 +54,19 @@ urlpatterns = [
           name='delete-data-akun-super'),
      path('data-pasien', super.pasien,
          name='data-pasien'),
+     path('api/data-pasien', API_Super.pasien,
+         name='api-data-pasien'),
      path('tambah-data-pasien', super.insertpasien,
          name='tambah-data-pasien'),
      path('edit-data-akun-pasien/<str:id_pasien>', super.editpasien,
          name='edit-data-akun-pasien'),
-      path('delete-data-akun-pasien/<str:id_pasien>', super.hapuspasien,
+     path('delete-data-akun-pasien/<str:id_pasien>', super.hapuspasien,
          name='delete-data-akun-pasien'),   
      path('riwayat-laporan', super.riwayatlaporan,
          name='riwayat-laporan'),
-     path('tambah-rekaman', super.tambahrekaman,
+     path('api/riwayat-laporan', API_Admin.deteksi,
+         name='api-riwayat-laporan'),
+     path('tambah-rekaman', super.simpan_deteksi,
          name='tambah-rekaman'),
 
      #Admin
@@ -67,18 +74,29 @@ urlpatterns = [
          name='dashboard-admin'),
      path('data-pasien-admin', admin.pasien,
          name='data-pasien-admin'),
+     path('api/data-pasien-admin', API_Admin.pasien,
+         name='api-data-pasien-admin'),
      path('tambah-data-pasien-admin', admin.insertpasien,
          name='tambah-data-pasien-admin'),
      path('edit-data-akun-pasien-admin/<str:id_pasien>', admin.editpasien,
          name='edit-data-akun-pasien-admin'),
-      path('delete-data-akun-pasien-admin/<str:id_pasien>', admin.hapuspasien,
+     path('delete-data-akun-pasien-admin/<str:id_pasien>', admin.hapuspasien,
          name='delete-data-akun-pasien-admin'),
+     path('riwayat-laporan-admin', admin.riwayatlaporan,
+         name='riwayat-laporan-admin'),
+     path('tambah-rekaman-admin', admin.simpan_deteksi,
+         name='tambah-rekaman-adminka'),  
 
      #Pasien
      path('dashboard-pasien', dashboard.pasien,
          name='dashboard-pasien'),
      path('edit-data-akun/<str:username>', pasien.editpasien,
          name='edit-data-akun'),
+     path('riwayat-laporan-pasien', pasien.riwayatlaporan,
+         name='riwayat-laporan-pasien'),
+     path('api/riwayat-laporan-pasien', API_Pasien.deteksi,
+         name='api-riwayat-laporan-pasien'),
+     
 
      #LoginAPI
      path('loginAPI', loginAPI.loginAPI,
@@ -87,6 +105,8 @@ urlpatterns = [
      #cekidpasien
      path('cekIDPasien', API_Pasien.cekid_pasien,
           name='cekIDPasien'),
+     path('cekNamaPasien', API_Pasien.ceknama_pasien,
+          name='cekNamaPasien'),
 
 
      # auth

@@ -29,33 +29,40 @@
                 <div class="card-header">
                     <h4 class="my-2">Tambah Rekaman</h4>
                 </div>
-                <form id="bindingFrom" url="#" action="#">
-                    
+                <form action="#" method="POST">
+                    {% csrf_token %}
                     <div class="card-body">
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">ID Pasien</label>
                             <div class="col-sm-12 col-md-7">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="" aria-label="" mame="id_pasien" id="id_pasien">
+                                    <input type="text" class="form-control" placeholder="" aria-label="" name="id_pasien" id="id_pasien">
                                     <div class="input-group-append">
                                       <button class="btn btn-primary" type="button" onclick="cekid_pasien()">Button</button>
                                     </div>
                                   </div>
-                                  <p class="my-0" id="nama_lengkap" hidden>Nama Lengkap</p>
+                                  <p class="my-0" id="nama_lengkap" name= ""hidden>Nama Lengkap</p>
 
                                 <!-- <input type="text" id="id_obj" name="id_obj" class="form-control" hidden /> -->
                             </div>
                         </div>
-
+                        <!-- <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Lengkap</label>
+                            <div class="col-sm-12 col-md-7">
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control" placeholder="" aria-label="" name="nama_lengkap" id="nama_lengkap" read>
+                                </div>
+                            </div>
+                        </div> -->
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jenis Fisiologis</label>
                             <div class="col-sm-12 col-md-7">
                                 <select name="jenis_fisiologis" id="jenis_fisiologis" class="form-control">
                                     <option value="none" selected disabled hidden>Pilih Jenis Fisiologis</option>
-                                    <option value="Laki-Laki">Otak - EEG</option>
-                                    <option value="Perempuan">Jantung - ECG</option>
+                                    <option value="Otak - EEG">Otak - EEG</option>
+                                    <option value="Jantung - ECG">Jantung - ECG</option>
                                   </select>
-                                <div class="invalid-feedback">Please fill in your Jenis Fisiologis</div>
+                                <div class="invalid-feedback" id="label-peringatan">Please fill in your Jenis Fisiologis</div>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
@@ -63,11 +70,11 @@
                             <div class=" col-sm-12 col-md-7">
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="choose custom-file-input col-10" id="file_predict">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                        <input type="file" class="choose custom-file-input col-10" id="file_predict" onchange="coba()">
+                                        <label class="custom-file-label" for="customFile" id="label">Choose file</label>
                                     </div>
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button" onclick="eeg_predict()">Button</button>
+                                        <button class="btn btn-primary" type="button" onclick="predict()">Button</button>
                                     </div>    
                                 </div>
                             </div>
@@ -76,14 +83,14 @@
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Hasil Deteksi</label>
                             <div class="col-sm-12 col-md-7">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="" aria-label="" mame="result" id="result" readonly>
+                                    <input type="text" class="form-control" placeholder="" aria-label="" name="result" id="result" readonly>
                                   </div>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                             <div class="col-sm-12 col-md-7">
-                                <button class="btn btn-success" type="button" onclick="binding()">Submit</button>
+                                <button class="btn btn-success" type="submit" >Submit</button>
                                 <input class="btn btn-danger ml-2" type="button" value="Close" onclick="tutup()">
                             </div>
                         </div>

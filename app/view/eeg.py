@@ -6,7 +6,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 
 model = load_model(
-    "sources/model/2023-07-03_02-06-56_CNN_Raw")
+    "sources/model/ModelOtak")
 
 
 @csrf_exempt

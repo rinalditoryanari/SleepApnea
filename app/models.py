@@ -56,4 +56,16 @@ class Pasien(models.Model):
     class Meta:
         db_table = "pasien"
 
+class Rekaman(models.Model):
+    id_pasien= models.CharField(primary_key=True,max_length=200,blank=True)
+    id_rs=models.CharField(max_length=200,blank=True)
+    nama_lengkap=models.EmailField(max_length=500,blank=True)
+    usia=models.CharField(max_length=200,blank=True)
+    waktu_rekaman=models.CharField(max_length=200,blank=True)
+    hasil_rekaman=models.CharField(max_length=200,blank=True)
+    jenis_sinyal=models.CharField(max_length=200,blank=True)
+    
+    class Meta:
+        db_table = "rekaman"
+
 

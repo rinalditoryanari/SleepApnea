@@ -18,3 +18,9 @@ function edit(){
     const url = 'http://127.0.0.1:8000/edit-data-akun/' +sessionStorage.getItem('username')
     window.location.href = url
 }
+
+function deteksi(){
+    console.log("test");
+    const url = 'http://127.0.0.1:8000/riwayat-laporan-pasien/' +sessionStorage.getItem('username')
+    window.location.href = url
+}

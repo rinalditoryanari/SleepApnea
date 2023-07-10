@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.utils import timezone
-from app.models import Super,User,Admin,Pasien
+from app.models import Super,User,Admin,Pasien,Rekaman
 from pprint import pprint
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
@@ -50,3 +50,7 @@ def editpasien(request,username):
         messages.success(request,"Data Berhasil diedit !!")
         return render(request, 'pages/stisla/dashboard/pasien.html',{'pasiens':pasiens})
     return render(request, 'pages/stisla/pasien/edit-pasien.html',{'pasien':pasien,'user':user})
+
+def riwayatlaporan(request,username):
+    rekamans= Rekaman.objects.all()
+    return render(request, 'pages/stisla/pasien/riwayat-laporan.html',{'rekamans':rekamans})
