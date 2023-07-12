@@ -16,9 +16,19 @@ def index(request):
 def master(request):
     supers = User.objects.filter(role="super").count()
     hospitals = Super.objects.values('rs').distinct().count()
+    masters = User.objects.filter(role="master")
+    masters_list = list(masters.values())
+    masters_data = []
+    for master in masters_list:
+        masters_data.append({
+            'email': master['email'],
+            'role': master['role'],
+            'username': master['username']
+        })
     hasil = {
-        'supers' : supers,
-        'hospitals' : hospitals,
+        'supers': supers,
+        'hospitals': hospitals,
+        'masters': masters_data,  # Pass the updated masters data
     }
     return render(request, 'pages/stisla/dashboard/master.html',hasil)
 

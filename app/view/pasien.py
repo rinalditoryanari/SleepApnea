@@ -8,15 +8,12 @@ import mysql.connector as sql
 from urllib.parse import unquote
 from datetime import date,datetime, timedelta
 
-def editpasien(request,username):
+def editpasien(request):
     # email = unquote(username)
-    user = User.objects.get(username=username)
-    pasien= Pasien.objects.get(username=user.username)
-    # pprint(admin)
-    # pprint(user)global id,rs,usr,em,pwd
-    global id,rs,usr,em,pwd
-    username_lama = user.username
+    global id,rs,usr,em,pwd,usr_lama,name
     if request.method=="POST":
+        # pprint(admin)
+        # pprint(user)global id,rs,usr,em,pwd
         m=sql.connect(host="localhost",user="root",passwd="",database='test')
         cursor=m.cursor()
         d=request.POST
@@ -29,8 +26,12 @@ def editpasien(request,username):
                 id_rs=value
             if key=="name":
                 nama=value
+            if key=="nama_lengkap":
+                name=value
             if key=="username":
                 usr=value
+            if key=="username_lama":
+                usr_lama=value
             if key=="email":
                 em=value
             if key=="password":
@@ -40,17 +41,31 @@ def editpasien(request,username):
             if key=="alamat":
                 alamat=value    
         
-        c="update pasien set id_pasien='{}',rs='{}',id_rs='{}',username='{}',nama_lengkap='{}',alamat='{}',no_telp='{}' where username ='{}' ".format(id,rs,id_rs,usr,nama,alamat,telp,username_lama)
+        # username_rs = request.POST.get("username_rs")
+
+        c="update pasien set id_pasien='{}',rs='{}',id_rs='{}',username='{}',nama_lengkap='{}',alamat='{}',no_telp='{}' where username ='{}' ".format(id,rs,id_rs,usr,nama,alamat,telp,usr_lama)
         cursor.execute(c)
         m.commit()
-        d="update users set username='{}',email='{}',password='{}' where username ='{}' ".format(usr,em,pwd,username_lama)
+        d="update users set username='{}',email='{}',password='{}' where username ='{}' ".format(usr,em,pwd,usr_lama)
         cursor.execute(d)
         m.commit()
-        pasiens = Pasien.objects.all()
+        rekamans = Rekaman.objects.filter(nama_lengkap=name)
+        rekamans = list(rekamans)
+        for rekaman in rekamans:
+            rekaman = Rekaman.objects.filter(nama_lengkap=name)
+            rekaman.update(nama_lengkap=nama)
         messages.success(request,"Data Berhasil diedit !!")
-        return render(request, 'pages/stisla/dashboard/pasien.html',{'pasiens':pasiens})
-    return render(request, 'pages/stisla/pasien/edit-pasien.html',{'pasien':pasien,'user':user})
+        return render(request, 'pages/stisla/dashboard/pasien.html')
+    return render(request, 'pages/stisla/pasien/edit-pasien.html')
 
-def riwayatlaporan(request,username):
-    rekamans= Rekaman.objects.all()
-    return render(request, 'pages/stisla/pasien/riwayat-laporan.html',{'rekamans':rekamans})
+def riwayatlaporan(request):
+    # rekamans= Rekaman.objects.all()
+    return render(request, 'pages/stisla/pasien/riwayat-laporan.html')
+
+# def hapusdeteksi(request, waktu_dibuat): 
+    rekaman = Rekaman.objects.get(waktu_dibuat=waktu_dibuat)
+    # pprint(admin)
+    rekaman.delete()
+    pasiens = Pasien.objects.all()
+    messages.success(request,"Data Berhasil dihapus !!") 
+    return render(request, 'pages/stisla/admin/data-pasien.html',{'pasiens':pasiens})

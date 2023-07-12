@@ -4,6 +4,7 @@ from app.models import Super,User,Admin,Pasien
 from django.views.decorators.csrf import csrf_exempt
 import mysql.connector as sql
 from django import template
+from django.contrib import messages
 
 em=''
 pwd=''
@@ -52,7 +53,6 @@ def loginAPI(request):
                 em=value
             if key=="password":
                 pwd=value
-        
         c="select * from users where email='{}' and password='{}'".format(em,pwd)
         cursor.execute(c)
         t=tuple(cursor.fetchone())

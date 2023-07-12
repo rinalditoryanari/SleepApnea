@@ -59,6 +59,7 @@
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Username</label>
                             <div class="col-sm-12 col-md-7">
                                 <input type="text" id="username" name="username" class="form-control" placeholder="Username" required  value="{{pasien.username}}"/>
+                                <input type="text" id="username_lama" name="username_lama" class="form-control" hidden />
                                 <div class="invalid-feedback">Please fill in your Username</div>
                             </div>
                         </div>
@@ -66,6 +67,7 @@
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Lengkap</label>
                             <div class="col-sm-12 col-md-7">
                                 <input type="text" id="name" name="name" class="form-control" placeholder="Nama Lengkap" required value="{{pasien.nama_lengkap}}"/>
+                                <input type="text" id="nama_lengkap" name="nama_lengkap" class="form-control" placeholder="Nama Lengkap" required hidden />
                                 <div class="invalid-feedback">Please fill in your Full Name</div>
                             </div>
                         </div>
@@ -145,4 +147,6 @@
 <!---->
 {% block page_js %}
 <script src="{% static 'assets/js/page/index-0.js' %}"></script>
+<script src="{% static 'assets/js/halaman/edit-pasien.js' %}"></script>
+
 {% endblock %}

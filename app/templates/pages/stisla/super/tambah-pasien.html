@@ -127,6 +127,16 @@
         </div>
     </div>
 </section>
+{% for message in messages %}
+	{% if message.tags == 'error' %}
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		var m = "{{ message }}";
+		swal("Error !!", m , "error")
+	</script>
+	{% endif %}
+    
+{% endfor %}
 {% endblock %}
 <!---->
 {% block plugins_js %}

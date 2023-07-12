@@ -124,6 +124,9 @@ def insertdata(request):
         age = today - tgl
         age_year = age.days // 365
         # pprint(age_year)
+        if Super.objects.filter(id_nurse=id).exists() or Super.objects.filter(username=usr).exists() or User.objects.filter(email=em).exists():
+            messages.error(request,"ID Admin , Username, Email Sudah Dipakai  !!")
+            return render(request, 'pages/stisla/super/tambah-pasien.html')
         c="insert into users Values('{}','{}','{}','{}')".format(usr,em,pwd,"super")
         cursor.execute(c)
         m.commit()

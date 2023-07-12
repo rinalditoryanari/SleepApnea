@@ -1,20 +1,23 @@
 from django.urls import path
 from django.shortcuts import redirect
 from .view import dashboard, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
-from .view import login
+from .view import login,landing
 from .view import master
 from .view import super
 from .view import admin
 from .view import loginAPI
 from .view import pasien
-from .view import API_Pasien, API_Admin, API_Super
+from .view import API_Pasien, API_Admin, API_Super,API_Dashboard
 from .view import eeg,ecg
-
+from datetime import datetime
 
 urlpatterns = [
     path('abcdefgh', dashboard.dashboard),
 
-    path('', lambda request: redirect('auth-login2')),
+    path('', lambda request: redirect('landing-page')),
+
+    path("landing-page", landing.landingpage, name="landing-page"),
+
 
     path("auth-login2", login.login, name="auth-login2"),
     path('dashboard-general-dashboard', dashboard.index0,
@@ -42,6 +45,8 @@ urlpatterns = [
      #Super Admin
      path('dashboard-super', dashboard.superadmin,
          name='dashboard-super'),
+     path('api/dashboard-super', API_Dashboard.superadmin,
+         name='api-dashboard-super'),
      path('data-akun-admin', super.data,
          name='data-akun-admin'),
      path('api/data-akun-admin', API_Super.admin,
@@ -72,6 +77,8 @@ urlpatterns = [
      #Admin
      path('dashboard-admin', dashboard.admin,
          name='dashboard-admin'),
+     path('api/dashboard-admin', API_Dashboard.admin,
+         name='api-dashboard-admin'),
      path('data-pasien-admin', admin.pasien,
          name='data-pasien-admin'),
      path('api/data-pasien-admin', API_Admin.pasien,
@@ -90,12 +97,18 @@ urlpatterns = [
      #Pasien
      path('dashboard-pasien', dashboard.pasien,
          name='dashboard-pasien'),
-     path('edit-data-akun/<str:username>', pasien.editpasien,
+     path('api/dashboard-pasien', API_Dashboard.pasien,
+         name='api-dashboard-pasien'),
+     path('edit-data-akun', pasien.editpasien,
          name='edit-data-akun'),
+     path('api/edit-data-akun', API_Pasien.edit_pasien,
+         name='api-edit-data-akun'),
      path('riwayat-laporan-pasien', pasien.riwayatlaporan,
          name='riwayat-laporan-pasien'),
      path('api/riwayat-laporan-pasien', API_Pasien.deteksi,
          name='api-riwayat-laporan-pasien'),
+     # path('delete-data-deteksi/<datetime:waktu_dibuat>', pasien.hapusdeteksi,
+     #     name='delete-data-deteksi'),
      
 
      #LoginAPI

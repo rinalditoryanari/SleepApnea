@@ -10,5 +10,6 @@ function getData(){
 
 function logout(){
     sessionStorage.clear()
+    alert("Anda Sudah Logout")
     window.location.href = "http://127.0.0.1:8000/auth-login2"
 }

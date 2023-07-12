@@ -54,6 +54,9 @@ def insertpasien(request):
         today = datetime.now()
         age = today - tgl
         age_year = age.days // 365
+        if Pasien.objects.filter(id_pasien=id).exists() or Pasien.objects.filter(username=usr).exists() or User.objects.filter(email=em).exists():
+            messages.error(request,"ID Admin , Username, Email Sudah Dipakai  !!")
+            return render(request, 'pages/stisla/super/tambah-pasien.html')
         c="insert into users Values('{}','{}','{}','{}')".format(usr,em,pwd,"pasien")
         cursor.execute(c)
         m.commit()
@@ -94,14 +97,20 @@ def editpasien(request,id_pasien):
             if key=="no_telp":
                 telp=value
             if key=="alamat":
-                alamat=value    
-        
+                alamat=value
+            if key=="nama_lengkap":
+                name=value    
         c="update pasien set id_pasien='{}',rs='{}',id_rs='{}',username='{}',nama_lengkap='{}',alamat='{}',no_telp='{}' where username ='{}' ".format(id,rs,id_rs,usr,nama,alamat,telp,username_lama)
         cursor.execute(c)
         m.commit()
         d="update users set username='{}',email='{}',password='{}' where username ='{}' ".format(usr,em,pwd,username_lama)
         cursor.execute(d)
         m.commit()
+        rekamans = Rekaman.objects.filter(nama_lengkap=name)
+        rekamans = list(rekamans)
+        for rekaman in rekamans:
+            rekaman = Rekaman.objects.filter(nama_lengkap=name)
+            rekaman.update(nama_lengkap=nama)
         pasiens = Pasien.objects.all()
         messages.success(request,"Data Berhasil diedit !!")
         return render(request, 'pages/stisla/admin/data-pasien.html',{'pasiens':pasiens})

@@ -99,6 +99,43 @@ def deteksi(request):
         }
         return JsonResponse(response, status=500)
 
+@csrf_exempt
+def edit_pasien(request):
+    try:
+        if request.method == "POST":
+            username_rs = request.POST.get("username_rs")
+            print(username_rs)
+            # Retrieve id_rs from the database
+            m = sql.connect(host="localhost", user="root", passwd="", database="test")
+            cursor = m.cursor()
+            query = "SELECT nama_lengkap FROM pasien WHERE username = %s"
+            cursor.execute(query, (username_rs,))
+            result = cursor.fetchone()
+            
+            if result:
+                nama_lengkap = str(result[0])
 
-     
-        
+                # Retrieve pasiens from the Pasien model
+                pasiens = Pasien.objects.filter(username=username_rs).values()
+                users = User.objects.filter(username=username_rs).values()
+                response = {
+                    "input": username_rs,
+                    "pasiens" : list(pasiens.values()),
+                    "users" : list(users.values()),
+                }
+                return JsonResponse(response)
+            else:
+                response = {
+                    "error": "Invalid username_rs",
+                }
+                return JsonResponse(response, status=400)
+        else:
+            response = {
+                "error": "Invalid request method",
+            }
+            return JsonResponse(response, status=400)
+    except Exception as e:
+        response = {
+            "error": str(e),
+        }
+        return JsonResponse(response, status=500)

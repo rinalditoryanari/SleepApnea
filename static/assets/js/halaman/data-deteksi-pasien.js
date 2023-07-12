@@ -11,7 +11,7 @@ function refresh() {
         redirect: "follow",
     };
     console.log(sessionStorage.getItem("username"));
-    fetch("http://127.0.0.1:8000/api/riwayat-laporan", requestOptions)
+    fetch("http://127.0.0.1:8000/api/riwayat-laporan-pasien", requestOptions)
         .then((response) => response.text())
         .then((result) => {
             var result = JSON.parse(result);
@@ -19,7 +19,7 @@ function refresh() {
                 var data = result.deteksi;
                 console.log(data);
 
-                $("#table-deteksi").DataTable({
+                $("#table-rekaman").DataTable({
                     data: data,
                     responsive: true,
                     pageLength: 10,

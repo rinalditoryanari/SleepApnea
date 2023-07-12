@@ -17,7 +17,7 @@
 				</a>
 				<ul class="dropdown-menu">
 					<li class="">
-						<a class="nav-link" style="cursor: pointer;" onclick="edit()">Edit Account</a>
+						<a class="nav-link" style="cursor: pointer;" href="{% url 'edit-data-akun' %}">Edit Account</a>
 					</li>
 				</ul>
 			</li>
@@ -25,7 +25,7 @@
 				<a href="" class="nav-link has-dropdown"><i class="fas fa-file-waveform"></i><span>Rekaman Analisa</span></a>
 				<ul class="dropdown-menu">
 					<li class="">
-						<a class="nav-link" onclick="deteksi()" style="cursor: pointer;">Riwayat Laporan</a>
+						<a class="nav-link" href="{% url 'riwayat-laporan-pasien' %}" style="cursor: pointer;">Riwayat Laporan</a>
 					</li>
 				</ul>
 			</li>

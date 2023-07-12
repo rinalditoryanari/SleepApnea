@@ -52,36 +52,39 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-3 col-sm-12">
-			<div class="card">
-				<div class="card-header">
-					<h4>On Progress &nbsp; . &nbsp; . &nbsp; .</h4>
-					<div class="card-header-action">
-						<a href="#" class="btn btn-primary">Selengkapnya &nbsp; ></a>
-					</div>
-				</div>
-				<div class="card-body p-0">
-					<div class="table-responsive">
-						<table class="table table-striped mb-0">
-							<thead>
-								<tr>
-									<th>ID</th>
-                                    <th>Nama</th>
-									<th>Alamat</th>
-									<th>Tanggal</th>
-                                    <th>Waktu</th>
-                                    <th>Status</th>
-								</tr>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="my-2">Data Akun Master</h4>
+                </div>
+				{% for master in masters %}
+                    <div class="card-body">
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Email</label>
+                            <div class="col-sm-12 col-md-7">
+								<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">:</label>
+                                <label class="col-form-label col-lg-3">{{master.email}}</label> 
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Username</label>
+                            <div class="col-sm-12 col-md-7">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">:</label>
+							<label class="col-form-label col-lg-3">{{master.username}}</label>
+                            </div>
+                        </div>
+						<div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Role</label>
+                            <div class="col-sm-12 col-md-7">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">:</label>
+							<label class="col-form-label col-lg-3">{{master.role}}</label>
+                            </div>
+                        </div>
+                    </div>
+					{% endfor %}
+            </div>
+        </div>
+    </div>
 </section>
 {% endblock %}
 <!---->
