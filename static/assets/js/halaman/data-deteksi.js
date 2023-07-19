@@ -50,6 +50,17 @@ function refresh() {
                             title: "Hasil Deteksi",
                             data: "hasil_rekaman",
                         },
+                        {
+                            title: "Action",
+                            // data: id_pasien,
+                            render: function (data, type, full, meta) {
+                                waktu = full.waktu_rekaman
+                                // console.log(waktu);
+                                element = '<td><a href="/cetak-hasil/'+waktu+'" class="btn btn-primary ml-2">Cetak</a>'
+                                return element
+                            },
+                            orderable: false,
+                          },
                     ],
                 });
             }

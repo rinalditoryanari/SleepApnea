@@ -6,6 +6,15 @@ from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 import mysql.connector as sql
 from datetime import date,datetime, timedelta
+# from django.http import HttpResponse
+# from django.template.loader import render_to_string
+# from weasyprint import HTML   
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+import pdfkit
+import os
+import calendar
+
 
 
 id=''
@@ -159,4 +168,34 @@ def riwayatlaporan(request):
     rekamans= Rekaman.objects.all()
     return render(request, 'pages/stisla/admin/riwayat-laporan.html',{'rekamans':rekamans})
 
+def generate_pdf(request,waktu_rekaman):
+    # Retrieve the HTML content to convert to PDF
+    path_wkhtmltopdf = '/usr/local/bin/wkhtmltopdf'  # This may vary depending on your system
+    # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+    config = pdfkit.configuration(wkhtmltopdf='C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe')
     
+    # Remove 'T' separator and replace it with a space
+    waktu_rekaman = waktu_rekaman.replace('T', ' ')
+
+    # Convert the datetime string to a datetime object
+    waktu_rekaman = datetime.strptime(waktu_rekaman, '%Y-%m-%d %H:%M:%S')
+
+    # Retrieve data from the database based on the datetime parameter
+    rekamans = Rekaman.objects.get(waktu_rekaman=waktu_rekaman)
+    pasiens = Pasien.objects.get(id_pasien=rekamans.id_pasien)
+    days = calendar.day_name[waktu_rekaman.weekday()]
+    now = timezone.now()
+
+    html = render_to_string('pages/stisla/admin/cetak-rekaman.html',{'rekamans':rekamans,'pasiens':pasiens,'days':days,'now':now})
+    option ={
+        'footer-left' :'Dicetak Pada ' + now.strftime('%d/%m/%Y %H:%M:%S')
+    }
+    pdf = pdfkit.from_string(html, False,configuration=config,options=option)
+
+    # Create a HTTP response with PDF content
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="Hasil_Deteksi.pdf"'
+    response.write(pdf)
+    # return render(request, 'pages/stisla/admin/cetak-rekaman.html',{'rekamans':rekamans,'pasiens':pasiens,'days':days,'now':now})
+
+    return response

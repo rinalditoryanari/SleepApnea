@@ -53,6 +53,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+PDFKIT_CONFIG = {
+    'WKHTMLTOPDF_PATH': '/usr/local/bin/wkhtmltopdf',
+    'OPTIONS': {
+        'quiet': '',
+    },
+}
+
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [

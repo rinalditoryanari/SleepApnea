@@ -92,7 +92,9 @@ urlpatterns = [
      path('riwayat-laporan-admin', admin.riwayatlaporan,
          name='riwayat-laporan-admin'),
      path('tambah-rekaman-admin', admin.simpan_deteksi,
-         name='tambah-rekaman-adminka'),  
+         name='tambah-rekaman-adminka'),
+     path('cetak-hasil/<str:waktu_rekaman>', admin.generate_pdf,
+         name='cetak-hasil'),  
 
      #Pasien
      path('dashboard-pasien', dashboard.pasien,

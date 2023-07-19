@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+
+    .tabular {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .label {
+      display: inline-block;
+      width: 100px; /* Adjust the width as per your preference */
+      white-space: nowrap;
+    }
+    
+    span {
+      display: inline-block;
+    }
+    
+    .center {
+      display: table;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .right-content {
+      float: right;
+    }
+
+    .hormat {
+      text-align: center;
+    }
+
+    .footer {
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-top: 2px solid #555555;
+    }
+   .footer-text {
+      padding-top: 5px;
+      padding-left: 3px;
+      padding-right: 3px;
+  
+    }
+  </style>
+</head>
+<body style="padding: 3rem">
+  <div class="center">
+    <h2>Hasil Deteksi</h2>
+  </div>
+    <p style="margin-top: 1rem">
+      Dari hasil deteksi pada hari {{days}}, {{rekamans.waktu_rekaman}} dengan atas:
+    </p>
+
+  
+  <div class="tabular">
+    <div>
+      <span class="label">Nama</span>
+      <span>:</span>
+      <span>{{rekamans.nama_lengkap}}</span>
+    </div>
+    <div>
+      <span class="label">Usia</span>
+      <span>:</span>
+      <span>{{rekamans.usia}}</span>
+    </div>
+    <div>
+      <span class="label">Jenis Kelamin</span>
+      <span>:</span>
+      <span>{{pasiens.jenis_kelamin}}</span>
+    </div>
+    <div>
+      <span class="label">Jenis Sinyal</span>
+      <span>:</span>
+      <span>{{rekamans.jenis_sinyal}}</span>
+    </div>
+  </div>
+  
+  <p style="margin-top: 3rem">
+    Menyatakan dengan ini, menyatakan hasil deteksi nama terkait merupakan
+  </p>
+  
+  <div class="center">
+    <h2>{{rekamans.hasil_rekaman}}</h2>
+  </div>
+
+    <div class="right-content">
+      <div class="hormat">
+        <p>Hormat Kami,</p>
+      </div>
+      <br>
+      <br>
+      <div class="center">
+        <p>{{pasiens.rs}}</p>
+      </div>
+    </div>
+
+
+</body>
+</html>
