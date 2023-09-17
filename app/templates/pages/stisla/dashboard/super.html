@@ -1,0 +1,132 @@
+<!-- @format -->
+{% extends 'superadmin.html' %}
+<!---->
+{% load static %}
+<!---->
+{% block title %}Super Admin Dashboard{% endblock title %}
+<!---->
+{% block plugins_css %}
+<link href="{% static 'node_modules/jqvmap/dist/jqvmap.min.css' %}" />
+<link href="{% static 'node_modules/weathericons/css/weather-icons.min.css' %}" />
+<link href="{% static 'node_modules/weathericons/css/weather-icons-wind.min.css' %}" />
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css"
+	integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
+	crossorigin="anonymous"
+	referrerpolicy="no-referrer"
+/>
+{% endblock %}
+<!---->
+{% block content %}
+<section class="section">
+	<div class="section-header">
+		<h1>Selamat Datang, Super Admin Dashboard</h1>
+	</div>
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-12">
+			<div class="card card-statistic-1">
+				<div class="card-icon bg-primary">
+					<i class="far fa-user"></i>
+				</div>
+				<div class="card-wrap">
+					<div class="card-header">
+						<h4>Total Admin</h4>
+					</div>
+					<div class="card-body" id="total_admin">
+						<p ></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-6 col-12">
+			<div class="card card-statistic-1">
+				<div class="card-icon bg-danger">
+					<i class="far fa-newspaper"></i>
+				</div>
+				<div class="card-wrap">
+					<div class="card-header">
+						<h4>Total Pasien</h4>
+					</div>
+					<div class="card-body" id="total_pasien">
+						<p ></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="my-2">Data Akun Master</h4>
+                </div>
+                    <div class="card-body">
+						<div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">ID Super Admin</label>
+                            <div class="col-sm-12 col-md-7">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">:</label>
+								<label class="col-form-label " id="id-super"></label>
+                            </div>
+                        </div>
+						<div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Lengkap</label>
+                            <div class="col-sm-12 col-md-7">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">:</label>
+							<label class="col-form-label " id="nama-super"></label>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Username</label>
+                            <div class="col-sm-12 col-md-7">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">:</label>
+							<label class="col-form-label " id="username-super"></label>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Email</label>
+                            <div class="col-sm-12 col-md-7">
+								<label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">:</label>
+                                <label class="col-form-label " id="email-super"></label> 
+                            </div>
+                        </div> -->
+						<div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Rumah Sakit</label>
+                            <div class="col-sm-12 col-md-7">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">:</label>
+							<label class="col-form-label " id="rs-super"></label>
+                            </div>
+                        </div>
+						<div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Role</label>
+                            <div class="col-sm-12 col-md-7">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">:</label>
+							<label class="col-form-label " id="role-super">Super Admin</label>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+<!---->
+{% block plugins_js %}
+<script src="{% static 'node_modules/simpleweather/jquery.simpleWeather.min.js' %}"></script>
+<script src="{% static 'node_modules/chart.js/dist/chart.min.js' %}"></script>
+<script src="{% static 'node_modules/jqvmap/dist/jquery.vmap.min.js' %}"></script>
+<script src="{% static 'node_modules/jqvmap/dist/maps/jquery.vmap.world.js' %}"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.js"
+	integrity="sha512-ZESy0bnJYbtgTNGlAD+C2hIZCt4jKGF41T5jZnIXy4oP8CQqcrBGWyxNP16z70z/5Xy6TS/nUZ026WmvOcjNIQ=="
+	crossorigin="anonymous"
+	referrerpolicy="no-referrer"
+></script>
+<script src="{% static 'node_modules/chocolat/dist/js/jquery.chocolat.min.js' %}"></script>
+{% endblock %}
+<!---->
+{% block page_js %}
+<script src="{% static 'assets/js/page/index-0.js' %}"></script>
+<script src="{% static 'assets/js/halaman/dashboard-super.js' %}"></script>
+
+{% endblock %}

@@ -25,6 +25,9 @@ SECRET_KEY = '@kl(1i%!c^m^2o+#r448ys0atp8%^!85l9k6b*!!esjxe5sq8l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+
 ALLOWED_HOSTS = []
 
 
@@ -49,6 +52,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+PDFKIT_CONFIG = {
+    'WKHTMLTOPDF_PATH': '/usr/local/bin/wkhtmltopdf',
+    'OPTIONS': {
+        'quiet': '',
+    },
+}
 
 ROOT_URLCONF = 'core.urls'
 
@@ -75,10 +85,6 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
 }
 
 

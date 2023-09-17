@@ -1,0 +1,148 @@
+<!-- @format -->
+{% extends 'admin.html' %}
+<!---->
+{% load static %}
+<!---->
+{% block title %}Admin Dashboard{% endblock title %}
+<!---->
+{% block plugins_css %}
+<link href="{% static 'node_modules/jqvmap/dist/jqvmap.min.css' %}" />
+<link href="{% static 'node_modules/weathericons/css/weather-icons.min.css' %}" />
+<link href="{% static 'node_modules/weathericons/css/weather-icons-wind.min.css' %}" />
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css"
+	integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
+	crossorigin="anonymous"
+	referrerpolicy="no-referrer"
+/>
+{% endblock %}
+<!---->
+{% block content %}
+<section class="section">
+	<div class="section-header">
+		<h1>Selamat Datang, Admin Dashboard</h1>
+	</div>
+	<div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="my-2">Edit Akun Pasien</h4>
+                </div>
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">ID Nurse</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" id="id" name="id_pasien" class="form-control" required placeholder="ID Pasien" value="{{pasien.id_pasien}}" readonly/>
+                                <!-- <input type="text" id="id_obj" name="id_obj" class="form-control" hidden /> -->
+                                <div class="invalid-feedback">Please fill in your Id Nurse</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Rumah Sakit</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" id="rs" name="rs" class="form-control" required placeholder="Nama Rumah Sakit" value="{{pasien.rs}}"/>
+                                <div class="invalid-feedback">Please fill in your Rumah Sakit</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">ID RS</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" id="id_rs" name="id_rs" class="form-control" required placeholder="ID Rumah Sakit" value="{{pasien.id_rs}}"/>
+                                <div class="invalid-feedback">Please fill in your ID Rumah Sakit</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Username</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required  value="{{pasien.username}}"/>
+                                <div class="invalid-feedback">Please fill in your Username</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama Lengkap</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Nama Lengkap" required value="{{pasien.nama_lengkap}}"/>
+                                <input type="text" id="nama_lengkap" name="nama_lengkap" class="form-control" placeholder="Nama Lengkap" required value="{{pasien.nama_lengkap}}" hidden/>
+                                <div class="invalid-feedback">Please fill in your Full Name</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">No Telepon</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" value="{{pasien.no_telp}}" id="no_telp" name="no_telp" class="form-control" placeholder="No Telepon" required />
+                                <div class="invalid-feedback">Please fill in your no_telp</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Alamat</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Alamat" required value="{{pasien.alamat}}"/>
+                                <div class="invalid-feedback">Please fill in your alamat</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Email</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email" required value="{{user.email}}"/>
+                                <div class="invalid-feedback">Please fill in your email</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Password</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Pasword" required value="{{user.password}}"/>
+                                <div class="invalid-feedback">Please fill in your password</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="checkbox" onclick="myFunction()">Show Password
+                                <div class="invalid-feedback">Please fill in your password</div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                            <div class="col-sm-12 col-md-7">
+                                <button class="btn btn-success" type="submit" >Submit</button>
+                                <input class="btn btn-danger ml-2" onclick="history.back()" type="button" value="Close">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+<!---->
+{% block plugins_js %}
+<script src="{% static 'node_modules/simpleweather/jquery.simpleWeather.min.js' %}"></script>
+<script src="{% static 'node_modules/chart.js/dist/chart.min.js' %}"></script>
+<script src="{% static 'node_modules/jqvmap/dist/jquery.vmap.min.js' %}"></script>
+<script src="{% static 'node_modules/jqvmap/dist/maps/jquery.vmap.world.js' %}"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.js"
+	integrity="sha512-ZESy0bnJYbtgTNGlAD+C2hIZCt4jKGF41T5jZnIXy4oP8CQqcrBGWyxNP16z70z/5Xy6TS/nUZ026WmvOcjNIQ=="
+	crossorigin="anonymous"
+	referrerpolicy="no-referrer"
+></script>
+<script>
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    } 
+</script>
+<script src="{% static 'node_modules/chocolat/dist/js/jquery.chocolat.min.js' %}"></script>
+{% endblock %}
+<!---->
+{% block page_js %}
+<script src="{% static 'assets/js/page/index-0.js' %}"></script>
+{% endblock %}

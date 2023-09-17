@@ -1,16 +1,137 @@
 from django.urls import path
 from django.shortcuts import redirect
 from .view import dashboard, layout, blankpage, bootstrap, components, forms, google_maps, modules, auth, error, features, credits, utilities
+from .view import login,landing
+from .view import master
+from .view import super
+from .view import admin
+from .view import loginAPI
+from .view import pasien
+from .view import API_Pasien, API_Admin, API_Super,API_Dashboard
+from .view import eeg,ecg
+from datetime import datetime
 
 urlpatterns = [
     path('abcdefgh', dashboard.dashboard),
 
-    path('', lambda request: redirect('dashboard-general-dashboard')),
+    path('', lambda request: redirect('landing-page')),
 
+    path("landing-page", landing.landingpage, name="landing-page"),
+
+
+    path("auth-login2", login.login, name="auth-login2"),
     path('dashboard-general-dashboard', dashboard.index0,
          name='dashboard-general-dashboard'),
     path('dashboard-ecommerce-dashboard', dashboard.index,
          name='dashboard-ecommerce-dashboard'),
+
+     #Model
+     path('api/predict-eeg', eeg.predict_api, name='api_predicteeg'),
+     path('api/predict-ecg',ecg.predict_api, name='api_predictecg'),
+
+     #Master
+     path('dashboard-master', dashboard.master,
+         name='dashboard-master'),
+     path('data-akun-super', master.data,
+         name='data-akun-super'),
+     path('tambah-data-akun-super', master.insertdata,
+         name='tambah-data-akun-super'),
+     path('edit-data-akun-super/<str:id_nurse>', master.editdata,
+         name='edit-data-akun-super'),
+     path('delete-data-akun-super/<str:id_nurse>', master.destroy, 
+          name='delete-data-akun-super'),
+     
+
+     #Super Admin
+     path('dashboard-super', dashboard.superadmin,
+         name='dashboard-super'),
+     path('api/dashboard-super', API_Dashboard.superadmin,
+         name='api-dashboard-super'),
+     path('data-akun-admin', super.data,
+         name='data-akun-admin'),
+     path('api/data-akun-admin', API_Super.admin,
+         name='api-data-akun-admin'),
+     path('tambah-data-akun-admin', super.tambahdata,
+         name='tambah-data-akun-admin'),   
+     path('edit-data-akun-admin/<str:id_admin>', super.editdata,
+         name='edit-data-akun-super'),
+     path('delete-data-akun-admin/<str:id_admin>', super.destroy, 
+          name='delete-data-akun-super'),
+     path('data-pasien', super.pasien,
+         name='data-pasien'),
+     path('api/data-pasien', API_Super.pasien,
+         name='api-data-pasien'),
+     path('tambah-data-pasien', super.insertpasien,
+         name='tambah-data-pasien'),
+     path('edit-data-akun-pasien/<str:id_pasien>', super.editpasien,
+         name='edit-data-akun-pasien'),
+     path('delete-data-akun-pasien/<str:id_pasien>', super.hapuspasien,
+         name='delete-data-akun-pasien'),   
+     path('riwayat-laporan', super.riwayatlaporan,
+         name='riwayat-laporan'),
+     path('api/riwayat-laporan', API_Admin.deteksi,
+         name='api-riwayat-laporan'),
+     path('tambah-rekaman', super.simpan_deteksi,
+         name='tambah-rekaman'),
+
+     #Admin
+     path('dashboard-admin', dashboard.admin,
+         name='dashboard-admin'),
+     path('api/dashboard-admin', API_Dashboard.admin,
+         name='api-dashboard-admin'),
+     path('data-pasien-admin', admin.pasien,
+         name='data-pasien-admin'),
+     path('api/data-pasien-admin', API_Admin.pasien,
+         name='api-data-pasien-admin'),
+     path('tambah-data-pasien-admin', admin.insertpasien,
+         name='tambah-data-pasien-admin'),
+     path('edit-data-akun-pasien-admin/<str:id_pasien>', admin.editpasien,
+         name='edit-data-akun-pasien-admin'),
+     path('delete-data-akun-pasien-admin/<str:id_pasien>', admin.hapuspasien,
+         name='delete-data-akun-pasien-admin'),
+     path('riwayat-laporan-admin', admin.riwayatlaporan,
+         name='riwayat-laporan-admin'),
+     path('tambah-rekaman-admin', admin.simpan_deteksi,
+         name='tambah-rekaman-adminka'),
+     path('cetak-hasil/<str:waktu_rekaman>', admin.generate_pdf,
+         name='cetak-hasil'),  
+
+     #Pasien
+     path('dashboard-pasien', dashboard.pasien,
+         name='dashboard-pasien'),
+     path('api/dashboard-pasien', API_Dashboard.pasien,
+         name='api-dashboard-pasien'),
+     path('edit-data-akun', pasien.editpasien,
+         name='edit-data-akun'),
+     path('api/edit-data-akun', API_Pasien.edit_pasien,
+         name='api-edit-data-akun'),
+     path('riwayat-laporan-pasien', pasien.riwayatlaporan,
+         name='riwayat-laporan-pasien'),
+     path('api/riwayat-laporan-pasien', API_Pasien.deteksi,
+         name='api-riwayat-laporan-pasien'),
+     # path('delete-data-deteksi/<datetime:waktu_dibuat>', pasien.hapusdeteksi,
+     #     name='delete-data-deteksi'),
+     
+
+     #LoginAPI
+     path('loginAPI', loginAPI.loginAPI,
+         name='loginAPI'),
+
+     #cekidpasien
+     path('cekIDPasien', API_Pasien.cekid_pasien,
+          name='cekIDPasien'),
+     path('cekNamaPasien', API_Pasien.ceknama_pasien,
+          name='cekNamaPasien'),
+
+
+     # auth
+    path("auth-forgot-password", auth.auth_forgot_password,
+         name="auth-forgot-password"),
+    path("auth-login", auth.auth_login, name="auth-login"),
+    path("auth-login2", login.index0, name="auth-login2"),
+    path("auth-register", auth.auth_register, name="auth-register"),
+    path("auth-reset-password", auth.auth_reset_password,
+         name="auth-reset-password"),
 
     # Layout
     path("layout-default-layout", layout.layout_default_layout,

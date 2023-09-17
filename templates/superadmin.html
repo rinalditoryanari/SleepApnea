@@ -1,0 +1,66 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport" />
+		<title>{% block title %}{% endblock %}</title>
+
+		<!-- General CSS Files -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+			integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<style>
+			html {
+				scroll-behavior: smooth;
+			}
+		</style>
+
+		<!-- CSS Libraries -->
+		{% block plugins_css %}{% endblock %}
+
+		<!-- Template CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+		<link rel="stylesheet" href="{% static 'assets/css/components.css' %}" />
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}" />
+	</head>
+
+	<body>
+		<div id="app">
+			{% include 'includes/header.html' %} {% include 'includes/supersidebar.html' %}
+			<div class="main-content">
+				<!---->
+				{% block content %} {% endblock content %}
+			</div>
+			{% include 'includes/footer.html' %}
+		</div>
+
+		<!-- General JS Scripts -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+		<script src = "https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+		<script src="{% static 'assets/js/stisla.js' %}"></script>
+
+		<!-- JS Libraies -->
+		{% block plugins_js %}{% endblock %}
+
+		<!-- Template JS File -->
+		<script src="{% static 'assets/js/scripts.js' %}"></script>
+		<script src="{% static 'assets/js/custom.js' %}"></script>
+		<script src="{% static 'assets/js/super.js' %}"></script>
+		<script src="{% static 'assets/js/cekid_pasien.js' %}"></script>
+		<script src="{% static 'assets/js/eeg.js' %}"></script>
+		<!-- Page Specific JS File -->
+		{% block page_js %}{% endblock %}
+	</body>
+</html>

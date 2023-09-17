@@ -10,6 +10,7 @@
 
 		<!-- General CSS Files -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+		<link rel = "stylesheet" type = "text/css" href = "https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css"/>
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -22,6 +23,7 @@
 				scroll-behavior: smooth;
 			}
 		</style>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 		<!-- CSS Libraries -->
 		{% block plugins_css %}{% endblock %}
@@ -34,7 +36,7 @@
 
 	<body>
 		<div id="app">
-			{% include 'includes/header.html' %} {% include 'includes/sidebar.html' %}
+			{% include 'includes/header.html' %} {% include 'includes/mastersidebar.html' %}
 			<div class="main-content">
 				<!---->
 				{% block content %} {% endblock content %}
@@ -48,7 +50,9 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+		<script src = "https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
 		<script src="{% static 'assets/js/stisla.js' %}"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 		<!-- JS Libraies -->
 		{% block plugins_js %}{% endblock %}
@@ -56,6 +60,7 @@
 		<!-- Template JS File -->
 		<script src="{% static 'assets/js/scripts.js' %}"></script>
 		<script src="{% static 'assets/js/custom.js' %}"></script>
+		<script src="{% static 'assets/js/master.js' %}"></script>
 
 		<!-- Page Specific JS File -->
 		{% block page_js %}{% endblock %}

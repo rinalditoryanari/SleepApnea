@@ -1,0 +1,165 @@
+<!-- @format -->
+
+{% extends 'landing.html' %}
+<!---->
+{% load static %}
+<!---->
+{% block title %}Login{% endblock title %}
+<!---->
+<!---->
+
+{% block plugins_css %}
+<!---->
+<link href="{% static 'node_modules/jqvmap/dist/jqvmap.min.css' %}" />
+<link href="{% static 'node_modules/weathericons/css/weather-icons.min.css' %}" />
+<link href="{% static 'node_modules/weathericons/css/weather-icons-wind.min.css' %}" />
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css"
+	integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
+	crossorigin="anonymous"
+	referrerpolicy="no-referrer"
+/>
+{% endblock %}
+<!---->
+
+{% block content %}
+<!---->
+<div class="base">
+	<nav class="navbar navbar-expand-lg navbar-dark">
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#about">About Us</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#features">Features</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="d-flex row align-items-center">
+			<div class="tulisan col-6">
+				<h1>Welcome to our website.</h1>
+				<h6>get your ECG or EEG checkup for detecting sleep apnea</h6>
+				<button class="tombol mt-3" onclick="login()" style="cursor: pointer;">
+					Get Started
+				</button>
+			</div>
+
+			<div class="ilustrasi col-6"></div>
+		</div>
+	</div>
+</div>
+<div class="wave">
+	<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+		<path
+			d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+			class="shape-fill"></path>
+	</svg>
+</div>
+
+<section id="about">
+	<div class="background text-center">
+		<h2 class="about">Our Team</h2>
+		<h6 class="abouts"> Welcome to the Meet Our Team page! We're excited to introduce you to the talented
+			individuals who make our website thrive.
+			<br> Get to know the faces behind our dedicated team:
+		</h6>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="box bx-shw">
+						<div class="content">
+							<img src="{% static 'assets/images/mail.jpg' %}" alt="Ismail" class="img-fluid">
+							<div class="info">
+								<h3 class="nama">M. Khairudin Ismail</h3>
+								<span class="role">Web Dev</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="box bx-shw">
+						<div class="content">
+							<img src="{% static 'assets/images/radit.jpeg' %}" alt="Radit" class="img-fluid">
+							<div class="info">
+								<h3 class="nama">Raditya Arya P.</h3>
+								<span class="role">ML Dev</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="box bx-shw">
+						<div class="content">
+							<img src="{% static 'assets/images/dito.png' %}" alt="Rinaldito" class="img-fluid">
+							<div class="info">
+								<h3 class="nama">Rinaldito Ahmad R.</h3>
+								<span class="role">ML Dev</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<div class="wave1">
+	<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+		<path
+			d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+			class="shape-fill"></path>
+	</svg>
+</div>
+<section id="features">
+	<div class="background1 text-center">
+		<h2 class="feature">Features</h2>
+		<div class="container">
+			<div class="row">
+				<div class="col-4">
+					<div class="card">
+						<img src="{% static 'assets/images/jantung.png' %}" alt="jantung">
+						<div class="info-features">
+							<h3 class="nama p-3">ECG</h3>
+							<p class="text text-justify">Our ECG feature makes it easier for you to detect sleep apnoea abnormalities, allowing for early intervention and proactive treatment. Get the latest information on your heart health with our ECG feature and take better control of your health.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="card">
+						<img src="{% static 'assets/images/otak.jpg' %}" alt="otak">
+						<div class="info-features">
+							<h3 class="nama p-3">EEG</h3>
+							<p class="text text-justify">By utilising advanced deep learning technology, it allows you to monitor and analyse your brain's electrical activity. By inputting EEG data, you can gain insights into your sleep disorder health.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="card">
+						<img src="{% static 'assets/images/sleep.jpeg' %}" alt="sleep apnea" class="image">
+						<div class="info-features">
+							<h3 class="nama p-3">SLeep Apnea</h3>
+							<p class="text text-justify">Our Sleep Apnea feature on the website is a game changer. By taking your ECG or EEG data, our innovative technology, you can track and analyse your sleep patterns to identify potential signs of sleep apnea.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<footer class="footer">
+	<div class="container text-center">
+		<h2>Copyright © 2023 Website by Ismail's Team. All Rights Reserved.</h2>
+	</div>
+</footer>
+{% endblock %}
+<!---->
+{% block page_js %}
+<script src="{% static 'assets/js/landing.js' %}"></script>
+
+{% endblock %}
