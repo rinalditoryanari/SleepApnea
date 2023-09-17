@@ -5,8 +5,8 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras.models import load_model
 
-model = load_model(
-    "sources/model/ModelOtak")
+# model = load_model(
+#     "sources/model/ModelOtak")
 
 
 @csrf_exempt
